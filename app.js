@@ -16,13 +16,13 @@ myApp.controller('MainCtrl', ['$scope', '$sce', function ($scope, $sce){
 		else if(tag === "#resume"){
 			$scope.header = "Resume";
       $scope.showContentImage = false;
-			$scope.text ="Check out my resume. [insert resume here]";
+			$scope.text ="<h3>Check out <a href='./resume.pdf'> my resume </a>. </h3>";
 		}
 		else if(tag === "brown"){
 			$scope.header = "Brown University";
       $scope.showContentImage = false;
 			$scope.text ="<h3> I'm currently a sophomore at Brown University, expected class of 2017 with a Bachelors of Science in Computer Science. \
-                      I'm taking a bunch of cool classes [insert class links/bios here].</h3>";
+                      I'm taking a bunch of cool systems and computer engineering classes this year.</h3>";
 		}
 		else if(tag === "fogcreek"){
 			$scope.header = "Brown University";
