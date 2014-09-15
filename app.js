@@ -10,7 +10,7 @@ myApp.controller('MainCtrl', ['$scope', '$sce', function ($scope, $sce){
 		if (tag === "#about") {
 			$scope.header = "About";
       $scope.showContentImage = false;
-			$scope.text = "<h3> Yo, I'm Will, programmer, new yorker, cartoon watcher. Currently a full-time computer science student at Brown University, \
+			$scope.text = "<h3> Yo, I'm Will, programmer, new yorker, 24/7 human being. Currently a full-time computer science student at Brown University, \
                       but check out some of the stuff I've done by clicking on the bouncing icons!</h3>";
 		}
 		else if(tag === "#resume"){
@@ -25,7 +25,7 @@ myApp.controller('MainCtrl', ['$scope', '$sce', function ($scope, $sce){
                       I'm taking a bunch of cool systems and computer engineering classes this year.</h3>";
 		}
 		else if(tag === "fogcreek"){
-			$scope.header = "Brown University";
+			$scope.header = "Fog Creek Software";
 			$scope.text ="<h3>During the summer of 2013, I worked at Fog Creek Software as a support engineering intern. I made <a href='https://github.com/FogCreek/solari-board'>this cool thing.</a> </h3>";
       $scope.showContentImage = true;
       $scope.contentImage = "image/solari.png";

@@ -230,12 +230,13 @@ ul a {
   height: 80%;
   width: 100%;
   border: black solid 4px;
+  padding: 0;
 }
 
 .traveler {
   position: absolute;
   width: 20px;
-  height: inherit;
+  height: 100%;
 
   -webkit-animation-name: travel;
   -webkit-animation-timing-function: linear;
