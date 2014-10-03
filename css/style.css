@@ -306,3 +306,13 @@ ul a {
   -webkit-animation-duration: 7s;
   -webkit-animation-duration: 7s;
 }
+
+#traveler-5 {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+#bouncer-5 {
+  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+}
