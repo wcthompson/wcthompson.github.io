@@ -46,7 +46,7 @@ myApp.controller('MainCtrl', ['$scope', '$sce', function ($scope, $sce){
 		}
         else if(tag === "hack"){
             $scope.header = "Hack@Brown";
-            $scope.text ="<h3>Hack@Brown is more than just Brown's annual hackathon-we're an organization trying to change the hackathon culture to be more open and accessible to students of all backgrounds. \
+            $scope.text ="<h3>Hack@Brown is more than just Brown's annual hackathon-we're an organization trying to change hackathon culture to be more accessible to students of all backgrounds. \
                     In addition to putting on the hackathon in January, we teach workshops on skills not necessarily taught in class and work to generally improve openness and diversity in computer science.</h3>";
       $scope.contentImage = "image/thankyou.png";
       $scope.showContentImage = true;
