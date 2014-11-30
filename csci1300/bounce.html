@@ -1,0 +1,70 @@
+<head>
+<link href="bounce.css" rel="stylesheet" type="text/css"/>
+<title>Bounce Box Example</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="bounce.js"></script>
+<script type="text/javascript">
+    $( document ).ready(setup);
+</script>
+</head>
+
+<body>
+    <div id="stage">
+        <div class="traveler" >
+            <div id="item-1" class="bouncer" style="background-color: #5577aa;"> <b>ITEM 1</b></div>
+        </div>
+        <div class="traveler">
+            <div  id="item-2" class="bouncer" style="background-color: #ff4477;"> <b>ITEM 2</b></div>
+        </div>
+        <div class="traveler">
+            <div id="item-3" class="bouncer" style="background-color: #ccaabb;"> <b>ITEM 3</b></div>
+        </div>
+        <div  class="traveler">
+            <div id="item-4" class="bouncer" style="background-color: #eeddcc;"> <b>ITEM 4</b></div>
+        </div>
+        <div class="traveler">
+            <div id="item-5" class="bouncer" style="background-color: #ccbbbb;"> <b>ITEM 5</b></div>
+        </div>
+    </div>
+
+    <div>
+        <div id='content'>
+            <div id="item-1">
+                Item 1
+            </div>
+            <div id="item-2">
+                Item 2
+            </div>
+            <div id="item-3">
+                Item 3
+            </div>
+            <div id="item-4">
+                Item 4
+            </div>
+            <div id="item-5">
+                Item 5
+            </div>
+        </div>
+    <div style="position: absolute; top: 100px; left: 670px; width:600px;"> Hey CSCI TA! This is my concept for a funner-than-average portfolio/resume: The bouncy resume! It provides a new way to display your accomplishments in a way that doesn't come across too braggy. Any number of items can be added, each one getting a random vertical and horizontal bounce speed on page load.
+    To use this applet, you need to include the latest version of jQuery and link bounce.css and bounce.js (found in the source code below). 
+    <br>
+    <br>
+    Each item simply needs wrapped by a div with id 'stage' and have the following form: <pre> <code> &lt;div class=&quot;traveler&quot; &gt; 
+        &lt;div id=&quot;item-1&quot; class=&quot;bouncer&quot;&gt; ITEM 1&lt;/div&gt; 
+  &lt;/div&gt;
+
+  &lt;div id='content'&gt; &lt;div id=&quot;item-1&quot;&gt; Item 1 &lt;/div&gt; &lt;/div&gt;
+    </code></pre> where the 'bouncer' div contains whatever image or text you want bouncing around and the div with id matching the id of the bouncer contains whatever text or html you want displayed the bouncer is clicked. For an example in use, check out my personal site over <a href="http://wcthompson.github.io"> here</a>. 
+
+    The applet is purely css3 animation with a bit of jquery thrown in to handle the clicking. 
+
+     <p><a style="font-weight: bold;"href="https://github.com/wcthompson/wcthompson.github.io/tree/gh-pages/csci1300">Source Code Here</a></p>
+
+
+    </div>
+    <br>
+
+    </div>
+    
+</body>
+
