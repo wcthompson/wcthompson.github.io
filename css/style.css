@@ -17,7 +17,6 @@ html, body {
 }
 
 
-
 .bar {
   background-color: #2D1A82;
   color:white;
@@ -32,8 +31,8 @@ html, body {
   margin-right: auto;
   width: 100%;
   text-align: center;
-  height: 150px;
-  top: 60%;
+  height: 100px;
+  top: 400px;
   -webkit-transform: rotate(-8deg);
   -moz-transform: rotate(-8deg);
   -o-transform: rotate(-8deg);
@@ -51,10 +50,11 @@ html, body {
 }
 
 #stuff {
+  top: -50px;
   right: 80px;
   z-index: 100;
-  width: 150px;
-  height: 100%;
+  width: 130px;
+  height: auto%;
     -webkit-transform: rotate(-8deg);
   -moz-transform: rotate(-8deg);
   -o-transform: rotate(-8deg);
@@ -68,7 +68,7 @@ margin: 0;
 }
 
 #stuff div {
-  height: 150px;
+  height: 130px;
   width: 100%;
   display: block;
   text-align: center;
@@ -78,11 +78,15 @@ margin: 0;
 #content {
   position: relative;
   text-align: center;
-  top: 200px;
-  margin: auto;
+  top: 100px;
+  margin-left: 20%;
   width: 50%;
   max-height: 500px;
   max-width: 50%;
+}
+
+#content h1 {
+  color: red;
 }
 
 .dock span img {
@@ -102,7 +106,7 @@ margin: 0;
   -webkit-transition-timing-function:linear;
 }
 
-.dock span img:hover {
+.dock div:hover {
   cursor: pointer;
     width: 100%;
 }

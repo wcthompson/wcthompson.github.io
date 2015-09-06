@@ -10,20 +10,10 @@ myApp.controller('MainCtrl', ['$scope', '$sce', function ($scope, $sce){
 		if (tag === "#about") {
 			$scope.topic = "About";
       $scope.showContentImage = false;
-			$scope.text = "<h3> Yo, I'm Will, programmer, new yorker, 24/7 human being. Currently a full-time computer science student at Brown University, \
-                      but check out some of the stuff I've done by clicking on the bouncing icons!</h3>";
-		}
-		else if(tag === "#resume"){
-			$scope.topic = "Resume";
-      $scope.showContentImage = false;
-			$scope.text ="<h3>Check out <a href='./resume.pdf'> my resume </a>. </h3>";
+			$scope.text = "<h3> Hey there! I'm a computer science student at Brown University with a passion for cool projects and 24-hour subway systems. </h3>";
 		}
 		else if(tag === "brown"){
 			$scope.topic = "Brown University";
-      $scope.showContentImage = false;
-			$scope.text ="<h3> I'm currently a sophomore at Brown University, expected class of 2017 with a Bachelors of Science in Computer Science. \
-                      I'm taking a bunch of cool systems and computer engineering classes this year.</h3>";
-		}
 		else if(tag === "fogcreek"){
 			$scope.topic = "Fog Creek Software";
 			$scope.text ="<h3>During the summer of 2013, I worked at Fog Creek Software as a support engineering intern. I made <a href='https://github.com/FogCreek/solari-board'>this cool thing.</a> </h3>";
