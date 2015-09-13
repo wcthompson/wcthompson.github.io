@@ -11,30 +11,35 @@
 	<div id="name" class="bar">
 		<h1>Will Thompson</h1>
 	</div>
+	<div id="social">
+		<span><a href="https://www.linkedin.com/pub/will-thompson/78/43/11b
+" target="_blank"><img src="icons/linkedin.png"></span></a>
+		<span><a href="https://github.com/wcthompson" target="_blank"><img src="icons/github.png"></span></a>
+		<span><a href="http://toastygoast.tumblr.com" target="_blank"><img src="icons/tumblr.png"></span></a>
+	</div>
 	<div id="stuff" class="bar dock">
-		<div style="background-color:#E4572E">
+		<div style="background-color:#E4572E" >
 		</div>
-		<div style="background-color: #AC0D96;">
+		<div class="clickable" style="background-color: #AC0D96;" ng-click="getContent('about')">
 			<h2>About</h2>
 		</div>
-		<div style="background-color: #00B3BC;">
+		<div class="clickable" style="background-color: #00B3BC;" ng-click="getContent('work')">
 			<h2>Work</h2>
 		</div>
-		<div style="background-color: #00B3BC;">
+		<div class="clickable" style="background-color: #00B3BC;" ng-click="getContent('contact')">
 			<h2>Contact</h2>
 		</div>
-		<div style="background-color: #AC0D96;"> 
+		<div class="clickable" style="background-color: #AC0D96;" ng-click="getContent('resume')"> 
 			<h2>Resume</h2>
 		</div>
-		<div style="background-color: #E4572E;">
+		<div class="clickable" id="last-color" style="background-color: #E4572E;">
 		</div>
 	</div>
 
 	<div id="content">
 		<span> <h1> {{topic}} </h1> </span>
 		<img ng-show="showContentImage" ng-src="{{contentImage}}" align="middle">
-		<div ng-bind-html="trustedHtml"></div>
-			
+		<div class="text" ng-bind-html="trustedHtml"></div>
 	</div>
 
 </div>
