@@ -6,7 +6,7 @@
     <link href="css/digital_style.css" rel="stylesheet" type="text/css"/>
     <title>Digital Media Assignment 1</title>
 </head>
-<body ng-app='myApp' ng-init="" ng-controller="MainCtrl">
+<body>
     <div class="top">
         <h1> Hypertexual Starring of The Matrix </h1> 
     </div>
@@ -96,17 +96,15 @@
 
 </body>
     <script async src="//genius.codes"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="digital.js"></script>
+    <script src="jquery-1.12.1.min.js"></script>
 </html>
 
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $( "#spoon-scene" ).click(function() {
-            $("#spoon-top")slideToggle( "slow", function() {
-    
-  })});;
+        $("#spoon-scene").click( function() {
+            $("#spoon-top").slideToggle( "slow");
+  });
 });
 
 </script>
