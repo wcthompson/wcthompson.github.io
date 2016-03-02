@@ -2,7 +2,7 @@ html, body {
   font-family: 'Noto Sans', sans-serif;
   width: 100%;
   height: 100%;
-  background-color: #F0F0F0;
+  background-color: #FFFF72; 
   margin: 0 auto;
 }
 
@@ -10,25 +10,42 @@ html, body {
   font-size: 2em;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #FFFF35;
+  background-color: #FFFF72;
   color: black;
   margin: 0;
   text-align: center;
 }
 
-.content {
-  margin:0 auto;
-  width: 40em;
+.scene-name h3 {
+  padding: 20px 0 20px 0;
+   margin: 0;
+   font-size: 2em;
+   font-weight: bold;
 }
+
+.content {
+  
+}
+
 
 .scene {
   width: 100%;
+  margin:0 auto;
 
+}
+.scene-name {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .script {
-  display: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin:0 auto;
+  width: 40em;
   font-family: 'Lucida Sans Typewriter';
+  display: none;
+
 }
 
 .clickable:hover {
@@ -48,6 +65,33 @@ html, body {
 .quote p {
   text-align: justify;
 }
+
+#spoon-top {
+  background-image: url("../image/spoon-boy.jpg");
+  background-size: cover;
+  height: 300px;
+  color:white;
+  display: flex;
+  align-items: center;
+}
+
+#spoon-top div {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px #AAAAAA solid;
+  
+}
+
+.spoon-color {
+  background-color: #9377EC;
+}
+
+.preview-img img {
+  width: 400px;
+}
+
+
 
 
 
