@@ -16,6 +16,10 @@ html, body {
   text-align: center;
 }
 
+.top h1 {
+  padding-bottom: 20px;
+}
+
 .scene-name h3 {
   padding: 20px 0 20px 0;
    margin: 0;
@@ -31,6 +35,9 @@ html, body {
 .scene {
   width: 100%;
   margin:0 auto;
+  display: none;
+
+  padding: 10px 0 10px 0;
 
 }
 .scene-name {
@@ -44,8 +51,18 @@ html, body {
   margin:0 auto;
   width: 40em;
   font-family: 'Lucida Sans Typewriter';
-  display: none;
 
+}
+
+.space {
+  height: 40px;
+}
+
+.clickable div {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px #AAAAAA solid;
 }
 
 .clickable:hover {
@@ -67,7 +84,7 @@ html, body {
 }
 
 #spoon-top {
-  background-image: url("//wcthompson.github.io//image/spoon-boy.jpg");
+  background-image: url("../image/spoon-boy.jpg");
   background-size: cover;
   height: 300px;
   color:white;
@@ -75,23 +92,18 @@ html, body {
   align-items: center;
 }
 
-#spoon-top div {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px #AAAAAA solid;
-  
-}
-
 .spoon-color {
   background-color: #9377EC;
 }
 
-.preview-img img {
-  width: 400px;
+
+#about-script {
+  font-family: 'Noto Sans', sans-serif;
+  /*text-align: center;*/
 }
 
-
-
+#about-top div{
+  border: solid 2px black;
+}
 
 

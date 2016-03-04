@@ -11,6 +11,30 @@
         <h1> Hypertexual Starring of The Matrix </h1> 
     </div>
     <div class="content">
+        <div class="clickable scene-name" id="about-top" >
+            <div>
+                <h3> About </h3>
+            </div>  
+
+        </div>
+        <div class="scene" id="about-scene" >
+            <div class="script" id="about-script">
+                <p> Barthes methodology of starring a text involves pouring through the symbolic coding of every moment of a text and breaking it down into it's 5 symbolic codes - <b>Hermeneutic</b>, <b>Proairetic</b>, <b>Semantic</b>, <b>Symbolic</b>, and <b>Cultural</b>. 
+                This intensely analytic approach is surprisingly similar to the hypertextual annotations New York City startup Genius (formerly 'RapGenius') allows users to leave over the lyrics of 
+                <a href="http://genius.com/Adele-hello-lyrics">songs</a>
+                <a href="http://genius.com/Rihanna-work-lyrics">of</a>
+                <a href="http://genius.com/Chris-stapleton-fire-away-lyrics">all</a>
+                <a href="http://genius.com/David-bowie-blackstar-lyrics">genres</a>, and a varity of other mediums, including 
+                <a href="http://genius.com/William-shakespeare-hamlet-act-3-scene-1-annotated"> classic literature </a> and even 
+                <a href="http://genius.com/Law-and-order-svu-opening-line-annotated">television</a>. 
+                <p>In a move to expand beyond the annotation of song lyrics, Genius released a browser extension called the <a href="http://genius.com/web-annotator">Web Annotator.</a> The annotator adds a mutual, "stereographic" hypertexual space to all text anywhere on the internet. Anyone with the extension can view the annotations of anyway else, and they can include images and gifs and hyperlinks in addition to text. I believe that Genius' is founded on Barthes' principals, making it the perfect tool for my own close-reading. I will be using the genius web annotator extension to star the script from two scenes of The Matrix (script source <a href="http://www.imsdb.com/scripts/Matrix,-The.html">here</a>). In addition to using Barthes 5 codes, I am introducing my own code - the aesthetic code - to refer to the visual cues in scene that are specific to a visual medium, such as film. In more depth, the aesthetic code deals with cinematography, set and costume design, generally speaking things that may not be in the script itself, but are clear to any viewer.</p>
+            </div>
+        </div>
+
+        <div class="space">
+            
+        </div>
+
         <div class="clickable scene-name" id="spoon-top" >
             <div>
                 <h3> Spoon Scene </h3>
@@ -104,15 +128,21 @@
 
 </body>
     <script async src="//genius.codes"></script>
-    <script src="jquery-1.12.1.min.js"></script>
+    <script type='text/javascript' src="js/jquery-1.12.1.min.js"></script>
+    <script type='text/javascript' src='js/jquery.tipsy.js'></script>
+    <link rel="stylesheet" href="css/tipsy.css" type="text/css" />
 </html>
 
 <script type="text/javascript">
     $(document).ready(function() {
 
+        $("#about-top").click( function() {
+            $("#about-scene").slideToggle( "slow");
+        });
+
         $("#spoon-top").click( function() {
-            $("#spoon-script").slideToggle( "slow");
-  });
+            $("#spoon-scene").slideToggle( "slow");
+        });
 });
 
 </script>
