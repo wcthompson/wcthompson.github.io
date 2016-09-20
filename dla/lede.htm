@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0032)http://nickm.com/poems/lede.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+/* <![CDATA[ */
+body {
+ background: #fff;
+ color: #000;
+ margin: 0 0 0 24pt;
+ font-family: Optima, sans-serif;
+ font-size: 13pt;
+}
+a {
+ color: #117;
+ text-decoration: none;
+}
+/* ]]> */
+</style>
+<script type="text/javascript">
+var t = 0;
+var absurd_situation = ["getting a drink with Shrek", "being strip-searched in the airport", "swiping instead of inserting your credit card and looking like an idiot", "renting formal clothes", "getting raptured", "locking yourself out of your dorm for the 3rd time", "leaving the gym", "stealing the declaration of independence", "being shot out of a rocket in the general direction of Proxima Centauri looking for aliens", "burning your AP physics homework", "buying a lifetime supply of chef boyardee as doomsday prep"];
+var sad_descriptor = ["a jobless", "a forlorn", "a clumsy", "an antisocial", "a fretful", "a hirsute", "an unstylish", "a cockeyed", "an overly trusting", "a hopelessly republican", "a big-boned"];
+var nationality = ["Scottish", "Thai", "Romani", "Icelandic", "Belizian", "Belgian", "Welsh", "Salvadoran", "Canadian", "Turkish", "Armenian", "Micronesian"];
+var man_or_woman = ["man", "woman", "teenager", "senior citizen"];
+var silly_character = ["Wil-e Coyote", "their good friend Justin", "a carnivorous plant", "god", "a RISD student", "Christina Paxon", "a big dog", "a small dog", "Benjamin Franklin", "a medium sized dog", "chris tucker in Rush Hour 2"];
+var interact_with = ["netflix and chill with", "interrogate", "evangelize", "wink at", "dance for", "get coffee with", "vigorously encourage", "cast a dark, dark curse on", "pray with", "run a gambling racket with", "attend yoga classes with", "laugh at", "imitate"];
+function rand_range(max) {
+    "use strict";
+    return Math.floor(Math.random() * (max + 1));
+}
+function fresh(array) {
+    "use strict";
+    var index = rand_range(array.length - 2) + 1, selection = array[index];
+    array[index] = array[0];
+    array[0] = selection;
+    return selection;
+}
+function story() {
+    "use strict";
+    var last, lede, main = document.getElementById('main');
+    if (t <= 12) {
+        t += 1;
+    } else {
+        main.removeChild(document.getElementById('main').firstChild);
+    }
+    last = document.createElement('div');
+    last.appendChild(document.createElement('br'));
+    lede = "While " + fresh(absurd_situation) + ", " + fresh(sad_descriptor) + " " + fresh(nationality) + " " + fresh(man_or_woman) + " had an idea: Why not dress as " + fresh(silly_character) + " and " + fresh(interact_with) + " people?";
+    last.appendChild(document.createTextNode(lede));
+    main.appendChild(last);
+}
+function produce_stories() {
+    "use strict";
+    story();
+    setInterval(story, 3500);
+}</script>
+  <title>Lede</title>
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+<body onload="produce_stories();">
+<div style="float:right; background:#999; margin-left:6px; border-left:thin #000 solid; border-bottom:thin #000 solid; padding:6px">
+<div><br>Lede<br>Based on a <a href="http://www.newser.com/story/157857/scotlands-new-hero-is-man-in-giraffe-suit.html">True Story</a><br><a href="http://nickm.com/">Nick Montfort</a></div>
+</div>
+<div id="main"><div><br>While failing to hail a cab, an unstylish Canadian teenager had an idea: Why not dress as a skyscraper and interrogate people?</div><div><br>While watching happy-slapping videos online, a jobless Thai woman had an idea: Why not dress as a giraffe and pray with people?</div><div><br>While double-parking, an almost illiterate Turkish teenager had an idea: Why not dress as a robot and do good deeds for people?</div><div><br>While stepping over a street pizza, a cockeyed Armenian woman had an idea: Why not dress as a carnivorous plant and soothe people?</div></div>
+
+
+
+
+</body></html>
