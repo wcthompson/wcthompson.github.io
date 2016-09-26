@@ -1,0 +1,57 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h3>Text will go here</h3>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+  "origin": ["#[the_protein:#proteinPart#][veg1: #veg#][veg2: #veg#][veg3: #veg#][the_carb: #carb#][the_oil: #oil#][the_preseasoning: #preseasoning#][meat_seasoning: #seasoning#][carb_seasoning: #seasoning#][seasoning1: #seasoning#][seasoning2: #seasoning#]recipe#"],
+  "title": ['#meat_seasoning# #the_protein# #with# #the_carb#', '#carb_seasoning# #the_carb# #with# #the_protein#', '#meat_seasoning# #the_protein# and #veg1'],
+  "recipe" : [`<h2>#title#</h2> 
+              <h2>Ingredients:</h2>
+                <ul style="font: 14pt;">
+                <li>#number# #the_protein#</li>
+                <li>#weight# #the_carb#</li>
+                <li>#number# #veg1#</li>
+                <li>#number# #veg2#</li>
+                <li>#number# #veg3#</li> 
+                <li>#number# #measurement# #the_oil# </li>
+                <li>#number# #the_preseasoning#</li> 
+                <li>#fract# #measurement# #meat_seasoning#</li> 
+                <li>#fract# #measurement# #carb_seasoning#</li> 
+                <li>#fract# #measurement# #seasoning1#</li> 
+                <li>#fract# #measurement# #seasoning2#</li> 
+                </ul> 
+              <h2> Directions: </h2>
+              1. #prepare_meat# <br>
+              2. #prepare carb#<br>
+              3. #prepare_veg#<br>
+              4. #cook# <br>
+              5. #serving_instructions#
+                `],
+  "with": ['', 'with', 'with', 'on a bed of', 'served with', 'and'],
+  "number": ["2", "2", "2", "1", "1", "4", "4"],
+  "proteinPart": ['#boneless# pork chops', '#boneless# chicken breast #meat_cut#', '#boneless# chicken thighs #meat_cut#', 'fillet of salmon', 'fillet of tilapia', 'fried tofu'],
+  "boneless": ['', 'boneless'],
+  "meat_cut": ['sliced into 1in cubes', '#cut# into 1in cubes', '#cut# into bite-sized pieces', '#cut# into thin strips', '#cut# into thin strips', 'sliced into thin strips', 'shredded'],
+  "weight": ['#even_num# ounces'],
+  "even_num": ['4', '8', '14', '16', '16'],
+  "carb": ['#pasta_type#', '#pasta_type# pasta', '#pasta_type# pasta', 'orzo', 'white rice', 'jasmine rice', 'coconut rice'],
+  "pasta_type": ['macaroni', 'bow tie', 'linguine', 'rotini', 'fettuccine', 'penne', 'ziti'],
+  "veg": ['#pepper_type# peppers', 'fresh mushrooms, #cut#', 'green onion, #cut#', 'sweet onion, #cut#', 'red onion, #cut#', 'thickly sliced zucchini', 'thickly sliced yellow squash', 'salad greens'],
+  "cut": ['chopped', 'sliced'],
+  "pepper_type": ['green bell', 'red bell', ''],
+  "measurement": ['teaspoons', 'tablespoons'],
+  'seasoning': ['Cajun seasoning', 'Italian seasoning', 'chili powder','ground black pepper', 'salt', '#cheese_type# cheese', '#cheese_type# cheese', 'pesto sauce', 'garlic, minced', 'crushed red pepper flakes', 'lemon juice', 'garlic powder', 'dried basil', 'sage leaves', 'thyme', 'cayenne peppers', '#cut# jalapenos', '5 spice powder', 'teriyaki sauce'],
+  'cheese_type': ['cheddar', 'swiss', 'american', 'mozzarella', 'gouda', 'parmesan'],
+  'fract': ['2', '1', '1/2', '1/4', '3/4', '1/2'],
+  'preseasoning': ['garlic, #cut#', 'garlic, #cut#', 'garlic, #cut#', 'onion, #cut#'],
+  'oil': ['butter', 'extra virgin olive oil', 'olive oil', 'olive oil', 'vegetable oil'],
+  'temp': ['350 degrees', '375 degrees', '400 degrees']
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#origin#");
+	$('h3').html(t);
+}
+</script>
