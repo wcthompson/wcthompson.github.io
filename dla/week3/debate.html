@@ -1,0 +1,18 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var txt;
+var markov = new MarkovGeneratorWord(2,50)
+$.get("aa_s2e01.txt", function(text) {
+     markov.feed(text);
+});
+
+$.get("aa_s2e10.txt", function(text) {
+     markov.feed(text);
+});
+function generate(){
+  var t = markov.generate()
+  $('body').append("<p>"+t+"</p>")
+}
+</script>
+<button onclick="generate()">Generate</button>
