@@ -2,7 +2,7 @@
 <script src="../lib/markov.js"></script>
 <script>
 var txt;
-var markov = new MarkovGenerator(4, 8, "\n", false);
+var markov = new MarkovGenerator(3, 10, "\n", true);
 
 $.get("pokemon.txt", function(text) {
      markov.feed(text);
@@ -10,7 +10,8 @@ $.get("pokemon.txt", function(text) {
 
 function generate(){
   var t = markov.generate()
-  $('#pokemon').html("<p>"+t+"</p>"); 
+  t = t.split('.').join(' ');
+  $('#pokemon').html("<b>"+t+"</b>"); 
 }
 
 function getRandInt(min, max){
@@ -19,7 +20,7 @@ function getRandInt(min, max){
 
 </script>
 <h1> WHOS THAT POKEMON??</h1>
-<button style="position: absolute; top: 250;" onclick="generate()">Generate</button>
+<button onclick="generate()">Generate</button>
 <div style="width: 500px; height: 300px; background-size: 500px 300px; background-repeat: no-repeat; background-image: url(http://i.imgur.com/HddtBOTr.png); ">
   <p id="pokemon" style="position: absolute; left: 90px; top: 175px;"></p>
   
