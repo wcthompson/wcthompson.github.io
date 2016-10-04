@@ -2,7 +2,7 @@
 <script src="../lib/markov.js"></script>
 <script>
 var txt;
-var markov = new MarkovGeneratorWord(3,150);
+var markov = new MarkovGeneratorWord(3, 150);
 
 $.get("aa_s2e01.txt", function(text) {
      markov.feed(text);
@@ -26,4 +26,5 @@ function getRandInt(min, max){
 }
 
 </script>
+
 <button onclick="generate()">Generate</button>

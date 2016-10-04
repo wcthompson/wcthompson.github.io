@@ -1,0 +1,26 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var txt;
+var markov = new MarkovGenerator(4, 8, "\n", false);
+
+$.get("pokemon.txt", function(text) {
+     markov.feed(text);
+});
+
+function generate(){
+  var t = markov.generate()
+  $('#pokemon').html("<p>"+t+"</p>"); 
+}
+
+function getRandInt(min, max){
+  Math.floor(Math.random() * max) + min;
+}
+
+</script>
+<h1> WHOS THAT POKEMON??</h1>
+<button style="position: absolute; top: 250;" onclick="generate()">Generate</button>
+<div style="width: 500px; height: 300px; background-size: 500px 300px; background-repeat: no-repeat; background-image: url(http://i.imgur.com/HddtBOTr.png); ">
+  <p id="pokemon" style="position: absolute; left: 90px; top: 175px;"></p>
+  
+</div>
