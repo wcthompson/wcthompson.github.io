@@ -32,7 +32,6 @@ h1 {
   border-radius: 3px;
   box-shadow: 30px;
   filter: none;
-
 }
 
 .inner-frame img {
@@ -44,11 +43,35 @@ h1 {
   height: 100%;
 }
 
+#img4 .inner-frame {
+  position: relative;
+}
+
+#img4 h1 {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  font-size: 50pt;
+  color: white;
+  -webkit-text-stroke: 5px black;
+}
+
+#img4 #top-text {
+  position: absolute;
+  z-index: 100;
+  top: -40px;
+  left: 85px;
+}
+
+#img4 #bottom-text {
+  position: absolute;
+  z-index: 100;
+  bottom: -40px;
+  left: 75px;
+}
+
 .background-image {
   position: absolute;
   z-index: -1;
   max-height: 650px;
-  left: 0;
   height: 100%;
   width: 100%;
 
@@ -69,21 +92,21 @@ h1 {
 }
 
 #background_img2 {
-  background: url(no_threesome.png) no-repeat center center;
+  background: url(alt_no_rocks.png) no-repeat center center;
   background-size: cover;
   height: 580px;
 }
 
 #background_img3 {
-  background: url(sadDolphin.gif) no-repeat center center;
+  background: url(hackerman.png) no-repeat center center;
   background-size: cover;
-  height: 320px;
+  height: 590px;
 }
 
 #background_img4 {
-  background: url(sadDolphin.gif) no-repeat center center;
+  background: url(lemongrab.gif) no-repeat center center;
   background-size: cover;
-  height: 320px;
+  height: 340px;
 }
 
 #background_img5 {
@@ -94,7 +117,7 @@ h1 {
 </style>
 
 <script type="text/javascript">
-  var titles = ['wlecome, stragner', 'what a horrible night to have a curse', 'welcome, stranger', 'e p i c f a i l', 'can i interest you in some spicy memes?', '*burp*', 'there is no ethical consumption under late capitalism', 'its lit', 'kanye was right', 'one more deeper', 'rest in peace']
+  var titles = ['wlecome, stragner', 'what a horrible night to have a curse', 'welcome, stranger', 'e p 1 ç f 4 ! l //', 'can i interest you in some spicy memes?', '*burp*', 'there is no ethical consumption under late capitalism', 'its lit', 'kanye was right', 'one more deeper', 'rest in peace']
   function getRandInt(min, max){
     return Math.floor(Math.random() * max) + min;
   }
@@ -109,10 +132,7 @@ h1 {
     }
   }
   $(document).ready(function() {
-    shuffle(titles);
-    var txt = titles.shift();
-
-    $('#caption1').text(txt);
+    var txt = "";
 
     shuffle(titles);
     txt = titles.shift();
@@ -134,8 +154,8 @@ h1 {
 
 
 <body>
-  <h1 id="caption1"> </h1>
-  <div class="frame">
+  <h1 id="caption1"> welcome, stranger </h1>
+  <div class="frame" id="img1">
     <div class="background-image" id="background_img1"></div>
     <div class="inner-frame">
       <img src="window.png">
@@ -145,26 +165,28 @@ h1 {
   <div class="frame" id="img2">
     <div class="background-image" id="background_img2"></div>
     <div class="inner-frame">
-      <img src="no_threesome.png">
+      <img src="alt_no_rocks.png">
     </div>
   </div>
   <h1 id="caption3"> it's lit </h1>
   <div class="frame" id="img3">
-  <div class="background-image" id="background_img3"></div>
+    <div class="background-image" id="background_img3"></div>
     <div class="inner-frame">
-      <img src="sadDolphin.gif">
+      <img src="hackerman.png">
     </div>
   </div>
   <h1 id="caption4"> it's lit </h1>
-  <div class="frame" id="img3">
-  <div class="background-image" id="background_img3"></div>
+  <div class="frame" id="img4">
+    <div class="background-image" id="background_img4"></div>
     <div class="inner-frame">
-      <img src="sadDolphin.gif">
+      <h1 id="top-text">ITS TIME FOR</h1>
+      <h1 id="bottom-text">BOTTOM TEXT</h1>
+      <img src="lemongrab.gif">
     </div>
   </div>
   <h1 id="caption5"> it's lit </h1>
-  <div class="frame" id="img3">
-  <div class="background-image" id="background_img3"></div>
+  <div class="frame" id="img5">
+    <div class="background-image" id="background_img5"></div>
     <div class="inner-frame">
       <img src="sadDolphin.gif">
     </div>
