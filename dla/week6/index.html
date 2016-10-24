@@ -73,7 +73,7 @@ function makeDiv(){
       'left':posx+'px',
       'top':posy+'px',
       'display':'none'
-  }).appendTo( 'body' ).fadeIn(100).delay(1000).fadeOut(500, function(){
+  }).appendTo( 'body' ).fadeIn(100).delay(500).fadeOut(500, function(){
     $(this).remove();
     makeDiv(); 
   }); 
