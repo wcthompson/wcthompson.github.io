@@ -1,0 +1,142 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/subcollider.js"></script>
+<script src="../lib/timbre.js"></script>
+<script src="../lib/p5.min.js"></script>
+<script src="../lib/p5.sound.js"></script>
+
+<title>Spooky Scary Skeletons</title>
+<script type="text/javascript">
+/* timbre stuff I only kinda understand */
+var playing = false;
+var count = 0;
+var msec  = timbre.timevalue("bpm120 l8");
+var midis = [69, 71, 72, 76, 69, 71, 72, 76];
+var synth = T("OscGen", {wave:"saw", mul:0.25}).play();
+
+// set up processing
+var sound, amplitude;
+var isNotLoud = true;
+var txt = "Spooky scary skeletons Send shivers down your spine Shrieking skulls will shock your soul Seal your doom tonight Spooky, scary skeletons Speak with such a screech You'll shake and shudder in surprise When you hear these zombies shriek We're so sorry, skeletons You're so misunderstood You only want to socialize But I don't think we should 'Cause spooky, scary skeletons Shout startling shrilly screams They'll sneak from their sarcophagus And just won't leave you be"
+var timer = 0;
+
+function tick() {
+  count = 0
+  timer++;
+
+  if (! (timer >= txt.length )) {
+    $('h1').text(txt[timer])
+  }
+  // reshuffle array of midi notes on tick to change progression
+  if (timer % 4 == 0){
+    midis = midis.shuffle();
+    T("interval", {interval:msec}, function(count) {
+      if (count < midis.length) {
+        synth.noteOn(midis[count], 100);
+      } 
+    }).start();
+  } 
+}
+
+function preload() {
+  txt = txt.split(" ")
+}
+function setup() {
+  amplitude = new p5.Amplitude();
+}
+function draw() {
+
+
+}
+
+//handle gif generation
+var IMG_DIR = 'img/'
+var images = ['chair.gif', 'coffee.gif', 'dancing_1.gif', 'dootdoot.gif', 'with_pirate_hat.gif', 'pepsi.gif', 'computer.gif', 'cds.gif', 'with_sword.gif']
+function makeDiv(){
+  // vary size for fun
+  var divsize = ((Math.random()*100) + 50).toFixed();
+  
+  $newdiv = $('<div/>').css({
+      'width':divsize+'px',
+      'height':divsize+'px',
+      'background-color': color
+  });
+  var imgName = images.shuffle()[0]
+  var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+  img.attr('src', IMG_DIR + imgName);
+  img.appendTo($newdiv);
+  // make position sensitive to size and document's width
+  var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+  var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+  $newdiv.addClass('gif')
+  $newdiv.css({
+      'position': 'absolute',
+      'left':posx+'px',
+      'top':posy+'px',
+      'display':'none'
+  }).appendTo( 'body' ).fadeIn(100).delay(1000).fadeOut(500, function(){
+    $(this).remove();
+    makeDiv(); 
+  }); 
+}
+
+// 'main'
+$(document).ready(function() {
+  $('#play').click(function() {
+    setInterval(tick, 500)
+    makeDiv();
+    $('#play').hide();
+  });
+});
+
+</script>
+<style type="text/css">
+
+  body {
+    background: #000 url(twinkle.gif) repeat;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 10em;
+    font-family: Arial Black;
+    margin-top: 10%;
+    color: white;
+    z-index: 999;
+  }
+
+  .btn {
+    -webkit-border-radius: 6;
+    -moz-border-radius: 6;
+    border-radius: 6px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #3498db;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #play {
+    width: 70px;
+    padding: 0 0 5px 5px;
+  }
+
+  .gif img {
+    z-index: 0;
+    max-width: 200px;
+    position: absolute;
+  }
+</style>
+<body>
+  <div id="play" class="btn"> 
+    START
+  </div>  
+
+  <h1></h1>
+</body>

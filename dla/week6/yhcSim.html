@@ -1,0 +1,46 @@
+<script src="../lib/p5.min.js"></script>
+<script src="../lib/p5.sound.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script>
+var sound, amplitude;
+var isNotLoud = true;
+var txt = "hey here is some text I hope that you enjoy reading it set to tuba beats"
+var counter = 0;
+function preload(){
+  sound = loadSound('ekrem.mp3');
+  txt = txt.split(" ")
+}
+function setup(){
+	amplitude = new p5.Amplitude();
+	// sound.play()
+	sound.play()
+}
+
+function draw(){
+	var t = (Math.round(sound.currentTime()*100)/100).toString()
+	if(amplitude.getLevel() > 0.2 && isNotLoud){
+		$('h1').text(txt[counter])
+		isNotLoud = false;
+		counter++;
+		if(counter > txt.length-1){counter=0}
+	}  
+	if(amplitude.getLevel() <= 0.15){
+		isNotLoud = true;
+	}
+	//use this to figure out where to set the amplitude 
+	// console.log(amplitude.getLevel())
+}
+
+</script>
+<style>
+h1 {
+	text-align: center;
+	font-size: 10em;
+	font-family: Arial Black;
+	margin-top: 10%;
+}
+html{
+	background-color: lime;
+}
+</style>
+<h1></h1>

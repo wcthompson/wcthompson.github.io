@@ -1,0 +1,18 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<audio src="ekrem.mp3" preload></audio>
+<h1>Click anywhere to play</h1>
+<script type="text/javascript">	
+	$('body').click(function(){
+		$('h1').text("")
+		$('audio')[0].play()
+	})
+    $('audio').on('timeupdate',function(){
+      if(this.currentTime > 2 && this.currentTime <= 4){
+      	$('h1').text("What's up")
+      } else if(this.currentTime > 4 && this.currentTime <= 8){
+      	$('h1').text("how's it goin")
+      } else if(this.currentTime > 8 && this.currentTime <= 12){
+      	$('h1').text("i'm synced up to time")
+      }
+    });	
+</script>
