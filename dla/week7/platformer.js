@@ -2,8 +2,8 @@ var CANVAS_HEIGHT;
 var CANVAS_WIDTH;
 var backgroundGif
 
-var GRAVITY = .3
-var JUMP = 10
+var GRAVITY = .4
+var JUMP = 8
 var MAX_JUMPS = 2;
 
 var lastPlatformCorner
@@ -12,6 +12,7 @@ var player;
 var playerImg
 
 var PLATFORM_SPEED = 5;
+var PLATFORM_INTERVAL = 10;
 
 var track
 var analyzer;
@@ -104,10 +105,12 @@ if (track.isPlaying()) {
   stroke(0);
   fill(255,255,255);
   text(txt, CANVAS_WIDTH/2, CANVAS_HEIGHT/4);
+  text(parseInt(currentLevel), CANVAS_WIDTH-100, 0);
   // delete and draw platforms
   for (var i = 0; i < platforms.length; i++) {
     platform = platforms[i];
-    if (platform.x + platform.width < 0) {
+    if (platform.position.x + platform.width < 0) {
+
       platforms[i].remove();
     }
   }
@@ -120,7 +123,7 @@ if (track.isPlaying()) {
   }
 
   // spawn new platform
-  if(frameCount % 20 == 0) {
+  if(frameCount % PLATFORM_INTERVAL == 0) {
     var p = createPlatformAtAmp();
     platforms.add(p);
   }
@@ -171,10 +174,10 @@ function createPlatformAtAmp() {
   var vol = analyzer.getLevel();
   var y = map(vol, 0, 1, 10, height-100)
 
-  platform = createSprite(width, height-y, 100, 100);
+  platform = createSprite(width, height-y, 50, 20);
   platform.rotateToDirection = true;
   platform.velocity.x = -PLATFORM_SPEED;
-  platform.setCollider('rectangle', 0, 0, 100, 100);
+  platform.setCollider('rectangle', 0, 0, 50, 20);
 
   colorMode(HSB, 255)
   var h, b;
