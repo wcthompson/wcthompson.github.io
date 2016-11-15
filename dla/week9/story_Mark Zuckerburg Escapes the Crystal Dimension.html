@@ -1,0 +1,307 @@
+<tw-storydata name="Mark Zuckerburg Escapes the Crystal Dimension" startnode="1" creator="Twine" creator-version="2.0.11" ifid="F815DFB3-DE30-4144-8E48-4B7F94C53CA6" format="SugarCube" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+
+
+
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
+
+
+</script><tw-passagedata pid="1" name="Escape the Crystal Dimension VII - Mark&#39;s Awakening" tags="" position="700,0">&lt;img src=&quot;http://i.imgur.com/wYgANTH.png&quot; style=&quot;width: 500px;&quot;&gt;
+
+[[Start Game-&gt;prologue]]</tw-passagedata>
+<tw-passagedata pid="2" name="prologue" tags="" position="700,150">
+&lt;b&gt;Friday, January 27th&lt;/b&gt;
+It was never supposed to be like this, never. The whole of humanity had failed, its unsatiable thirst for power had finally unleashed an evil that could not be stopped.
+
+&lt;img src=&quot;http://media.salon.com/2013/04/mark_zuckerberg3.jpg&quot;&gt;
+You are Mark Elliot Zuckerberg. Less than 2 weeks ago you were a fairly average adult male living an admittedly extrodinarily life  as founder and CEO of Facebook, Inc. 
+
+3 Months ago, your website-at your direction was pivotal in swaying the 2016 Presidential election in favor of the only logical choice at the time - Jill Ellen Stein, nominee of the Green Party. While all other candidates focused on their economic and foriegn policies, she alone offered something unique - [[crystals.-&gt;crystal_intro]] </tw-passagedata>
+<tw-passagedata pid="3" name="crystal_intro" tags="" position="700.0001,300">&lt;&lt;display &quot;init&quot;&gt;&gt;
+&lt;img src=&quot;http://i.imgur.com/xoHgPi4.jpg&quot; style= &#39;width: 600px;&#39;&gt;
+Crystals, she claimed, would save us. Solve the energy crisis, and by extension overpopulation, international terrorism, war, crime. Crystals would bring about a new era of world peace. The Green Party was finally living up to it&#39;s name.
+
+You and your company were galvanized by this promise and set about swaying public opinion through a wild campaign of Green Party fake news, you know, typical democracy stuff. 
+
+One week ago, on inauguration day, the transition to crystal based energy went horribly arwy. President Stein accidentally tore open a portal to the alien and inhospitable Crystal Dimension. 
+
+Cosmic horrors now roam the earth. Thanks Jill.
+
+You are one of who knows how many survivors left in the barren, crystaline wreckage that used to be San Francisco.
+
+[[Examine your surroundings-&gt;Camp]]</tw-passagedata>
+<tw-passagedata pid="4" name="Camp" tags="" position="700.0002,450">&lt;h1&gt;Camp&lt;/h1&gt;
+&lt;b&gt;&lt;&lt;print &quot;Day &quot; + visited() +&quot;:&quot;&gt;&gt;&lt;/b&gt;
+
+It&#39;s your camp, located in the dilapidated offices of an abandonded food delivery service startup. Well, you suppose it was doomed to fail anyway. 
+&lt;&lt;if $soylent is 1&gt;&gt;
+&lt;img src=&quot;http://blog.mediander.com/wp-content/uploads/2016/02/soylent_box.jpg&quot; style=&quot;width: 400px&quot;&gt;
+You have enough soylent to last you a lifetime. You love the stuff though, so it could be worse. 
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $hoverboard_charger eq 1&gt;&gt;
+&lt;img src=&quot;http://www.hovershop.com/thumbnail.asp?file=assets/images/81Zc9uoHy1L_SX522_.jpg&amp;maxx=500&amp;maxy=0&quot;&gt;
+You have a hoverboard charger. It probably belongs to one of those hoverboard gangs that popped up after the portal opened.
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if visited() lte 2&gt;&gt;
+How long have you been here? Days maybe. Too long, it&#39;s time to start searching...&lt;&lt;/if&gt;&gt;
+&lt;&lt;if visited() gt 2 and $events lt 12&gt;&gt;
+It&#39;s starting to get a slightly homey, crystline sort of feel, which is honestly kinda disturbing. If only there was a way to undo everything...&lt;&lt;/if&gt;&gt;
+&lt;&lt;if visited() eq 12&gt;&gt;
+[[Day 12 trapped in the crystal dimension. Just want to see my wife again.-&gt;day12]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if visited() gt 12&gt;&gt;
+The crystals grow stronger each day. You feel your time is running out.&lt;&lt;/if&gt;&gt;
+&lt;&lt;set $event to random(4)&gt;&gt;
+
+&lt;&lt;display &quot;Explore&quot;&gt;&gt;
+[[Rest-&gt;rest]]
+
+
+
+
+
+
+</tw-passagedata>
+<tw-passagedata pid="5" name="rest" tags="" position="500,400">&lt;&lt;set $dream = random(4)&gt;&gt;
+
+&lt;&lt;if $dream eq 0&gt;&gt;
+&lt;img src=&quot;http://i.imgur.com/4r9XVbJ.png&quot;&gt;
+You have a strange dream. What could it mean?
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $dream eq 1&gt;&gt;
+&lt;img src=&quot;http://i.imgur.com/tDZclNw.jpg&quot; style=&quot;width=500px&quot;&gt;
+You have a strange dream. What could it mean?
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $dream eq 2&gt;&gt;
+You have a deep, dreamless sleep.
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $dream eq 3&gt;&gt;
+You know you had a dream, but you can&#39;t remember it.
+&lt;&lt;/if&gt;&gt;
+[[Return-&gt;Camp][$events = $events + 1]]
+</tw-passagedata>
+<tw-passagedata pid="6" name="hoverboards" tags="" position="550,700">&lt;span style=&quot;color: red&quot;&gt;&lt;i&gt;.beep...beep...vrRRROOMMM&lt;/i&gt;&lt;/span&gt;
+
+As you make your way down whats left of Market street, you hear a strange beeping and the sound of motors...something is coming. 
+
+[[Hide, it&#39;s probably a threat-&gt;hoverboard_hide]] 
+[[Wait for them, maybe they can help you close the portal!-&gt;hoverboard_wait]] </tw-passagedata>
+<tw-passagedata pid="7" name="soylent" tags="" position="350.0001,700">&lt;img src=&quot;http://followingtherules.com/wp-content/uploads/2014/09/IMG_2351.jpg&quot; style=&quot;width: 400px;&quot;&gt;
+Horray, food supplies! I guess this is the one scenario the stuff is actually good for.
+
+
+[[Make a packet now-&gt;soylent2][$soylent = 1]]
+[[Take it back to Camp-&gt;Camp][$soylent = 1]]
+[[Leave it-&gt;Camp]] </tw-passagedata>
+<tw-passagedata pid="8" name="embarcadero" tags="" position="850.0001,600">You decide to explore the embarcadero today, at least you should have a gorgeous view of the crystal ocean.
+
+[[Go to the oceanfront-&gt;sanders1]] </tw-passagedata>
+<tw-passagedata pid="9" name="wasteland" tags="" position="1150.0001,350">You&#39;re curious about what happened to Golden Gate Park after the portal opened. 
+
+&lt;img src=&quot;http://vignette3.wikia.nocookie.net/finalfantasy/images/6/6a/Mor_Dhona_ARR_03.jpg/revision/latest?cb=20131103090733&quot; style=&quot;width:600px&quot;&gt;
+
+This really does not look promising.
+[[Return to Camp-&gt;Camp]] </tw-passagedata>
+<tw-passagedata pid="10" name="nothing" tags="" position="1500,550">&lt;&lt;set $crystals = random(1, 4)&gt;&gt;&lt;&lt;if $crystals eq 0&gt;&gt;
+&lt;img src=&quot;http://www.rawstory.com/wp-content/uploads/2015/10/Crystals-Shutterstock-www.shutterstock.com_-800x430.jpg&quot; style=&quot;width=500px&quot;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $crystals eq 1&gt;&gt;&lt;img src=&quot;http://www.powerthoughtsmeditationclub.com/wp-content/uploads/2015/06/pink_crystals_hd_widescreen_by_blopnuts.jpg&quot; style=&quot;width=500px&quot;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $crystals eq 2&gt;&gt;&lt;img src=&quot;http://media.beliefnet.com/~/media/photos/holistic-living/galleries/7-crystals-you-need-to-bring-love-into-your-love-life/crystals_intro.jpg&quot; style=&quot;width=500px&quot;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $crystals eq 3&gt;&gt;&lt;img src=&quot;https://s-media-cache-ak0.pinimg.com/originals/5e/15/cc/5e15ccf27951b14b2207136360e3b918.jpg&quot; style=&quot;width=500px&quot;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $crystals eq 4&gt;&gt;&lt;img src=&quot;http://i.imgur.com/cvcEM55.jpg&quot; style=&quot;width=500px&quot;&gt;&lt;&lt;/if&gt;&gt;
+nothing here but crystals.
+
+[[Return-&gt;Camp]]</tw-passagedata>
+<tw-passagedata pid="11" name="soylent2" tags="" position="350,850">&lt;img src=&quot;http://images.gearjunkie.com/uploads/2015/05/soylent-drink-in-cup.jpg&quot; style=&quot;width: 500px;&quot;&gt;
+
+You tear open a packet and empty it into a cup. You stir vigorously. 
+
+Delicious. No really, at some point you stopped liking it ironically and actually started enjoying the taste. 
+
+[[Time to go back to camp.-&gt;Camp]]</tw-passagedata>
+<tw-passagedata pid="12" name="hoverboard_hide" tags="" position="650.0001,850">
+You find a weird crystal pillar to hide behind, and wait for the noises to pass.
+&lt;&lt;if  $hoverboard_charger eq 0&gt;&gt;
+As you leave you spot something on the ground that wasn&#39;t there before.
+
+&lt;img src=&quot;http://www.hovershop.com/thumbnail.asp?file=assets/images/81Zc9uoHy1L_SX522_.jpg&amp;maxx=500&amp;maxy=0&quot;&gt;
+
+&lt;b&gt;You got the &lt;span style=&quot;green&quot;&gt;hoverboard charger&lt;/span&gt;&lt;/b&gt;
+&lt;&lt;/if&gt;&gt;
+[[Return to camp-&gt;Camp][$hoverboard_charger = 1]]</tw-passagedata>
+<tw-passagedata pid="13" name="hoverboard_wait" tags="" position="500,850">You stand your ground and wait at the edge of the street and wait for whoever or whatever might be coming...
+&lt;img src=&quot;http://assets.nydailynews.com/polopoly_fs/1.2477278.1451145504!/img/httpImage/image.jpg_gen/derivatives/article_750/87606395.jpg&quot; style=&quot;width:400px;&quot;&gt;
+
+&lt;&lt;if visited() eq 1&gt;&gt;
+&lt;span style=&quot;color:green&quot;&gt;&quot;do you think the new Macbooks will support my new bio-crystal neurological interface?&quot;&lt;/span&gt;
+
+&lt;span style=&quot;color:green&quot;&gt;&quot;no it&#39;s just USB-C, c&#39;mon it&#39;s not that bad&quot;&lt;/span&gt;
+
+Shit! It&#39;s a roving hoverboard gang of bro-grammers! &lt;&lt;print either(&quot;3&quot;, &quot;4&quot;, &quot;2&quot;)&gt;&gt; of them. But there&#39;s something odd about them...as they roll closer you begin to see that their silhouettes are oddly mishapen. Large crystals protrude from their backs and their eyes glow unnaturally... 
+	&lt;&lt;else&gt;&gt;
+		Damn! Another pack of crystlized hoverboarders.
+&lt;&lt;/if&gt;&gt;
+Uh oh! You&#39;ve been spotted! 
+&lt;&lt;if $hoverboard_charger is 0&gt;&gt;
+[[Hope they explode-&gt;hoverboard_explode]]
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $hoverboard_charger is 1&gt;&gt;
+&lt;span style=&quot;color:green&quot;&gt;&quot;hey guy. yeah you over there with the frizzy hair and the fleshy body. my buddy Elliot here lost the power cord to his hoverboard and he&#39;s really sad about that.&quot;&lt;/span&gt;
+
+&lt;span style=&quot;color:green&quot;&gt;&quot;yeah he was really upset about it, that hoverboard was like, a gift. a gift from himself to himself. it had like, significance bro.&quot;&lt;/span&gt;
+
+&lt;span style=&quot;color:green&quot;&gt;&quot;You wouldn&#39;t happen to know anything about that, would you?&quot;&lt;/span&gt;
+
+The leader flashes its eyes menacingly.
+[[Return the charger-&gt;return_charger]]
+&lt;&lt;/if&gt;&gt;
+
+
+
+
+</tw-passagedata>
+<tw-passagedata pid="14" name="day12" tags="" position="850.0001,450">&lt;img src=&quot;http://i.imgur.com/7vYQYvC.jpg&quot; style=&quot;width:400px;&quot;&gt;
+[[Return-&gt;Camp]] </tw-passagedata>
+<tw-passagedata pid="15" name="init" tags="" position="850.0001,300">&lt;&lt;silently&gt;&gt;
+&lt;&lt;set $events = 0&gt;&gt; \
+&lt;&lt;set $event = 0&gt;&gt; \
+&lt;&lt;set $soylent = 0&gt;&gt;\
+&lt;&lt;set $hoverboard_charger = 0&gt;&gt;\
+&lt;&lt;set $password = 0&gt;&gt;\
+&lt;&lt;set $found_time_machine = 0&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="16" name="Explore" tags="" position="1150.0002,600">&lt;&lt;if $event is 0 and $soylent is 0 &gt;&gt;\
+	[[Explore the City-&gt;soylent]] \
+  &lt;&lt;elseif $event is 1 and $password is 0 &gt;&gt;\
+	  [[Explore the City-&gt;hoverboards]] \
+  &lt;&lt;elseif $event is 2 and visited(&#39;resistance_hq&#39;) eq 0&gt;&gt;\
+	  [[Explore the City-&gt;embarcadero]] \
+  &lt;&lt;elseif $event is 3 &gt;&gt;\
+	  [[Explore the City-&gt;wasteland]]  \
+  &lt;&lt;else&gt;&gt;\
+	  [[Explore the City-&gt;nothing]]  \
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if visited(&#39;resistance_hq&#39;) gt 0&gt;&gt;
+  	[[Visit the Resistance HQ-&gt;resistance_hq]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="17" name="timemachine1" tags="" position="1150.0001,1100">This is it! Finally a way out of this nightmarish reality... You are about to finish what you started and set things right once and for all.
+
+[[Take the time machine back to before the election and change the result-&gt;change_election]]
+[[Take the time machine far into the future-&gt;future_ending]]</tw-passagedata>
+<tw-passagedata pid="18" name="change_election" tags="" position="1150,1250">You set the time machine to take you back to June 2016, that should be enough time to fix this mess. 
+
+You sit back and pull the lever. 
+[[Fix this mess-&gt;change_election2]]
+</tw-passagedata>
+<tw-passagedata pid="19" name="future_ending" tags="" position="1300.0001,1100">&lt;h1&gt;Travel to the Future&lt;/h1&gt;
+You accidentally trip and fall against the time machine control panel. You travel too far forward and are disentigrated by the heat-death of the universe.
+&lt;h2&gt;Game Over&lt;/h2&gt;
+
+[[Undo|previous()]]</tw-passagedata>
+<tw-passagedata pid="20" name="hoverboard_explode" tags="" position="550.0001,1000">&lt;img src=&quot;http://www.rickey.org/wp-content/uploads/2016/01/Exploding-Hoverboard-Caught-on-Video.png&quot;&gt;
+
+Just as the two-wheeled terrors began to close in on you...
+&lt;span style=&quot;color:red&quot;&gt;...fffFWOOOOOSSSSH&lt;/span&gt; 
+
+The pack leader&#39;s hoverboard bursts into flames!
+
+During the ensuing chaos, you make a quick getaway.
+
+[[Escape back to camp-&gt;Camp][$events = $events + 1]] 
+</tw-passagedata>
+<tw-passagedata pid="21" name="return_charger" tags="" position="400,1000">&lt;&lt;set $hoverboard_charger = -1&gt;&gt;
+&lt;&lt;set $password = 1&gt;&gt;
+
+&quot;&lt;span style=&quot;color=green&quot;&gt;tHAnkSss. remEMMberr the paSsWwworD is &lt;span style=&quot;color=blue&quot;&gt;password123&lt;/span&gt;&lt;/span&gt;&quot;
+
+You commit this information to memory. 
+
+[[Back to Camp-&gt;Camp][$events = $events + 1]]
+</tw-passagedata>
+<tw-passagedata pid="22" name="sanders1" tags="" position="850.0001,750">You arrive at the eastern waterfront of the city. There are no signs of life from the deserted rows of offices. 
+
+Hmm? That&#39;s strange, you never noticed that door before...
+&lt;img src=&quot;http://stmedia.startribune.com/images/1000*667/speakeasy012716+01.JPG&quot; style=&quot;width: 500px&quot;&gt;
+
+[[Knock on the door]]
+[[Return to Camp-&gt;Camp]] </tw-passagedata>
+<tw-passagedata pid="23" name="Knock on the door" tags="" position="1000.0001,750">You knock loudly on the door.
+
+...
+
+&lt;span style=&quot;color: red;&quot;&gt;&quot;... what&#39;s the password?&quot;&lt;/span&gt;
+
+&lt;&lt;if $password is 0&gt;&gt;
+[[Password? Please let me in, I&#39;m Mark Zuckerberg-&gt;no_entry]] 
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $password is 1&gt;&gt;
+[[&quot;password123&quot;-&gt;resistance1]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="24" name="no_entry" tags="" position="1000,900">The door stays firmly shut.
+
+[[Return to Camp-&gt;Camp][$events = $events+1]] </tw-passagedata>
+<tw-passagedata pid="25" name="resistance1" tags="" position="1150,900">&lt;img src=&quot;https://c1.staticflickr.com/1/241/521488040_ab5c1d7bcf_z.jpg?zz=1&quot;&gt;
+You hear the sound of locks unlocking. A masked man ushers you into the building and takes you through a dizzying maze of corridors to an elevator. He presses down. 
+
+[[Follow the man-&gt;resistance_hq]] </tw-passagedata>
+<tw-passagedata pid="26" name="resistance_hq" tags="" position="1300.0001,900">&lt;img src=&quot;http://berniesanderssocialist.com/wp-content/uploads/2015/09/berniesleeves-up.png&quot; style=&quot;400px&quot;&gt;
+&lt;&lt;if visited() eq 1&gt;&gt;
+&lt;span style=&quot;color:white&quot;&gt;&quot;At ease, solider.&quot;&lt;/span&gt;
+
+&lt;span style=&quot;color:white&quot;&gt;&quot;Welcome to the home of the resistance. We&#39;re just working class people sick and tired of status quo. In the last 2 weeks The 90% of wealth has gone to the Crystal Queen. That&#39;s just not right! Will you join our cause?&quot;&lt;/span&gt;
+
+Well, you found Bernie Sanders&#39; secret human resistance headquarters. But you&#39;ve always seen yourself as more of a leader than a follower, so you&#39;re about to pass on the offer when you notice the door behind the general marked [[TIME MACHINE-&gt;discuss_time_machine]]
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if visited() gt 1 and $soylent is 0&gt;&gt;
+&lt;span style=&quot;color:white&quot;&gt;We need your help Mark! Did you find a food source for the resistance yet?&lt;/span&gt;
+[[No not yet, still working on it]-&gt;Camp]
+&lt;&lt;elseif visited() gt 1 and $soylent is 1&gt;&gt;
+&lt;span style=&quot;color:white&quot;&gt;We need your help Mark! Did you find a food source for the resistance yet?&lt;/span&gt;
+[[I found this giant box of soylent?-&gt;give_soylent]]
+&lt;&lt;/if&gt;&gt;
+
+
+
+</tw-passagedata>
+<tw-passagedata pid="27" name="change_election2" tags="" position="1150,1400">Unfortunately, your adventures in Crystalized America have taught you no meaningful lessons, and you immediately decide that the solution is simply to rig the election in favor of a different candidate. This time things will be different, you pick...
+
+[[Hillary Clinton]]
+[[Donald Trump-&gt;wtf]]
+[[Gary Johnson-&gt;magnets_ending]]
+&lt;&lt;if visited() gt 3&gt;&gt;
+[[Just don&#39;t mess with it]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="28" name="Hillary Clinton" tags="" position="1150,1550">&lt;h1&gt;Get Hillary Clinton Elected&lt;/h1&gt;
+Hillary Clinton is elected president of the united states. She opens the same damn portal to the crystal dimension  6 months into her presidency. 
+&lt;h2&gt; Game Over&lt;/h2&gt;
+[[Undo|previous()]]</tw-passagedata>
+<tw-passagedata pid="29" name="wtf" tags="" position="1300,1550">&lt;h1&gt; Get Trump Elected&lt;/h1&gt;
+what the f**k is wrong with you??
+
+&lt;h2&gt; Game Over&lt;/h2&gt;
+[[Undo|previous()]]</tw-passagedata>
+<tw-passagedata pid="30" name="magnets_ending" tags="" position="1450,1550">&lt;h1&gt; Get Gary Johnson Elected&lt;/h1&gt;
+&lt;img src=&quot;http://www.legalsportsreport.com/wp-content/uploads/2015/11/Gary-Johnson-DFS-opinion.jpg&quot; style-&quot;width: 300px&quot;&gt;
+&lt;img src=&quot;http://www.legalsportsreport.com/wp-content/uploads/2015/11/Gary-Johnson-DFS-opinion.jpg&quot; style-&quot;width: 300px&quot;&gt;
+Gary Johnson, as it turns out, is totally obessed with magnets. He appoints the insane clown posse as secretaries of Education and launches national research effort to seek the power within magnets. 
+
+Facebook continues to make billions of dollars and you are one happy CEO.
+
+&lt;h2&gt; Game Over&lt;/h2&gt;
+[[Undo|previous()]]</tw-passagedata>
+<tw-passagedata pid="31" name="give_soylent" tags="" position="1000,1050">You hand over the soylent and Bernie unlocks the time machine room. 
+
+[[Finally! Enter the room with the time machine-&gt;timemachine1]] </tw-passagedata>
+<tw-passagedata pid="32" name="discuss_time_machine" tags="" position="1450.0001,900">Bernie Sanders: &quot;Oh this? Yeah that&#39;s our time machine. Doesn&#39;t actually do anything, don&#39;t get your hopes up.&quot;
+
+Your hopes are already up. You&#39;re sure you can use this to save the world.
+
+Bernie Sanders: &quot;Well how does this sound - The fight against the cyrstal scourge has been very taxing on our people. They are tired and they are hungry. While so far we seem to be safe, we&#39;re running out of food fast. 
+
+If you can do something about our food shortage, I&#39;ll let you take a look at our time machine.
+
+[[Guess I&#39;d better find some food..|previous()]]</tw-passagedata>
+<tw-passagedata pid="33" name="Just don&#39;t mess with it" tags="" position="950,1700">&lt;img src=&quot;http://i4.mirror.co.uk/incoming/article7099917.ece/ALTERNATES/s1200/PAY-Mark-Zuckerberg.jpg&quot; style=&quot;width:500px&quot;&gt;
+
+You are reunited with your wife and child and live happily ever after. </tw-passagedata>
+</tw-storydata>

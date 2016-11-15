@@ -15,18 +15,20 @@ var PLATFORM_SPEED = 5;
 var PLATFORM_INTERVAL = 10;
 
 var track
+var diamonds;
 var analyzer;
 var fft;
 var peak;
 
 var playbutton;
+var playbutton2;
 
 var currentLevel = 0; 
 var keepText = 5;
 
 function preload() {
   track = loadSound("lean_on.mp3");
-
+  diamonds = loadSound('diamonds.mp3');
 }
 
 function setup() {
@@ -38,10 +40,14 @@ function setup() {
 
   playerImg = loadGif('img/runner.gif');
 
-  playbutton = createButton('Play');
+  playbutton = createButton('Play lean_on.mp3');
   playbutton.position(25, 25);
   playbutton.mousePressed(startStory);
   playbutton.hide();
+  playbutton2 = createButton('Play playbutton2.mp3');
+  playbutton2.position(100, 25);
+  playbutton2.mousePressed(startStoryDiamonds);
+  playbutton2.hide();
 
   //player 
   player = createSprite(100, height - 200, 75, 75);
@@ -61,6 +67,7 @@ function setup() {
 
   while(!backgroundGif.loaded) {}
   playbutton.show()
+  playbutton2.show();
 }
 
 var story = ["I'm not sure how it started.", "it doesn't seem real anymore...", "...", "really wanna know, huh?", "me too. There isn't any plot yet."]
@@ -110,7 +117,6 @@ if (track.isPlaying()) {
   for (var i = 0; i < platforms.length; i++) {
     platform = platforms[i];
     if (platform.position.x + platform.width < 0) {
-
       platforms[i].remove();
     }
   }
@@ -193,7 +199,13 @@ function startStory() {
   if(!track.isPlaying()) {
     track.play();
     playbutton.remove();
+    playbutton2.remove();
   }
+}
+
+function startStoryDiamonds() {
+  track = diamonds
+  startStory();
 }
 
 
