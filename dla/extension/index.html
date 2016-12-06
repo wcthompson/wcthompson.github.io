@@ -7,16 +7,16 @@
 
 <script type="text/javascript">
 
-
-
 $( document ).ready(function() {
   time = 0;
   game = new DysgraphiaGame();
   $("#start-button").click(function() {
     $("#splashscreen").hide();
+    $("#hint").fadeIn();
      $("#email").fadeIn();
     game.start();
   });
+  $("#hint").hide();
   $("#email").hide();
   $("#score").hide();
   $("#splashscreen").fadeIn();
@@ -33,7 +33,7 @@ $( document ).ready(function() {
 
 <div id="mainwindow">
 <div id="header"  data-text="Dysgraphia" class="glitch">
-  <h1 class="title-text">Dysgraphia 2: Electric Boogaloo</h1>
+  <h1 id="title" class="title-text">Extension Simulator: <br>Dysgraphia Edition</h1>
 
 </div>
 <div id="thought">
