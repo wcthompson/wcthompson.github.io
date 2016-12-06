@@ -90,7 +90,6 @@ function DysgraphiaGame() {
     console.log(to)
     if (to.toLowerCase() === this.professorEmail.toLowerCase() ) {
       this.score += 2;
-      console.log('email match')
     }
 
     let subjectSplit = subject.split(" ");
@@ -139,12 +138,14 @@ function DysgraphiaGame() {
       this.computeScore(to, subject, body);
       $("#score-num").text(this.score);
       $("#score").show();
-      let reply = this.getProfessorResponse(this.score);
+      let reply = this.professorName + ": " + this.getProfessorResponse(this.score);
       $('#email').hide();
       $('#splashscreen').fadeIn();
       $('#splashscreen-message').text("After awhile you recieve a reply...");
       setTimeout(function () {
-        $('#splashscreen-message').text(reply);
+        $('#splashscreen-message').fadeOut(function () {
+          $(this).text(reply)
+        }).fadeIn();
       }, 3000)
   }
 
