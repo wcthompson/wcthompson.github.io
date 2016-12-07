@@ -1,7 +1,10 @@
 <script src="../lib/jquery-1.11.1.min.js"></script>
 <script src="../lib/tracery.js"></script>
+<script src="../lib/typo/typo.js"></script>
 <script src="./game.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee|Montserrat" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="animate.css">
+<link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake.min.css">
 <link rel="stylesheet" type="text/css" href="index.css">
 
 
@@ -12,11 +15,15 @@ $( document ).ready(function() {
   game = new DysgraphiaGame();
   $("#start-button").click(function() {
     $("#splashscreen").hide();
-    $("#hint").fadeIn();
-     $("#email").fadeIn();
+    $('#title-about').fadeOut();
+    $("#thought").fadeIn();
+    $("#timer").fadeIn();
+    $("#email").fadeIn();
     game.start();
   });
-  $("#hint").hide();
+  $("#reply").hide();
+  $("#timer").hide();
+  $("#thought").hide();
   $("#email").hide();
   $("#score").hide();
   $("#splashscreen").fadeIn();
@@ -33,17 +40,19 @@ $( document ).ready(function() {
 
 <div id="mainwindow">
 <div id="header"  data-text="Dysgraphia" class="glitch">
-  <h1 id="title" class="title-text">Extension Simulator: <br>Dysgraphia Edition</h1>
-
+  <h1 id="title" class="title-text">Incomplete<span id="title-in">Me</span></h1> <hr> <span id="title-about">a game about dysgraphia</span>
 </div>
-<div id="thought">
+<div id="thought" class="bubble">
   <span id="thought-text"> </span>
 </div>
-<div id="hint">
-    <span></span>
-</div>
-
 <div id="splashscreen">
+  <div id="reply">
+    <div id="reply-subject" class="bar"></div>
+    <div id="reply-my-name" class="bar">Student</div>
+    <div id="reply-my-preview" class="bar"></div>
+    <div id="reply-prof-name" class="bar"></div>
+    <div id="reply-body"></div>
+  </div>
   <p id="splashscreen-message"></p>
   <p id="score" class="title-text">Score: <span id="score-num">0</span></p>
   <div id="start-button" class="button">Start</div>
@@ -65,9 +74,8 @@ $( document ).ready(function() {
   <div id="body">
     <textarea  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="email-body"></textarea>
   </div>
-  <div class="button" id="send">
-  </div>
-  </div>
+  <div class="button" id="send"></div>
+</div>
 
   <div id="timer">
     <h1 id="timer-text"></h1>
