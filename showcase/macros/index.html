@@ -1,0 +1,194 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<style>
+/*this block of code makes an image take up the full background of a page*/
+html { 
+  
+}
+/*this block controls the styling of our text*/
+h1 {
+	text-align: center;
+	color: #9B7EDE;
+	font-family: Century Gothic;
+	font-size: 2em;
+}
+
+.frame {
+  display: block;
+  margin: auto;
+  text-align: center;
+  padding: 3px;
+  max-width: 100%
+  max-height: 600px
+}
+
+.inner-frame {
+  display: inline-block;
+  max-width: 800px;
+  max-height: 600px;
+  margin: 5px;
+  padding: 5px;
+  margin-top: 20px;
+  border: solid #FFC2E2 2px;
+  border-radius: 3px;
+  box-shadow: 30px;
+  filter: none;
+}
+
+.inner-frame img {
+  max-width: inherit;
+  max-height: inherit;
+} 
+
+#img2.inner-frame {
+  height: 100%;
+}
+
+#img4 .inner-frame {
+  position: relative;
+}
+
+#img4 h1 {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  font-size: 50pt;
+  color: white;
+  -webkit-text-stroke: 5px black;
+}
+
+#img4 #top-text {
+  position: absolute;
+  z-index: 100;
+  top: -40px;
+  left: 85px;
+}
+
+#img4 #bottom-text {
+  position: absolute;
+  z-index: 100;
+  bottom: -40px;
+  left: 75px;
+}
+
+.background-image {
+  position: absolute;
+  z-index: -1;
+  max-height: 650px;
+  height: 100%;
+  width: 100%;
+
+  display: block;
+  background-size: cover;
+  
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+#background_img1 {
+  background: url('window.png') no-repeat center center;
+  height: 800px;
+
+}
+
+#background_img2 {
+  background: url(alt_no_rocks.png) no-repeat center center;
+  background-size: cover;
+  height: 580px;
+}
+
+#background_img3 {
+  background: url(hackerman.png) no-repeat center center;
+  background-size: cover;
+  height: 590px;
+}
+
+#background_img4 {
+  background: url(lemongrab.gif) no-repeat center center;
+  background-size: cover;
+  height: 340px;
+}
+
+#background_img5 {
+  background: url(anime_season.png) no-repeat center center;
+  background-size: cover;
+  height: 500px;
+}
+</style>
+
+<script type="text/javascript">
+  var titles = ['wlecome, stragner', 'what a horrible night to have a curse', 'we can be friends', 'e p 1 ç f 4 ! l //', 'can i interest you in some spicy memes?', '*burp*', 'there is no ethical consumption under late capitalism', 'its lit', 'kanye was right', 'one more deeper', 'rest in peace', 'the sky was the color of television tuned to a dead channel', 'unironic memes ONLY!!', 'space intentionally left blank']
+  function getRandInt(min, max){
+    return Math.floor(Math.random() * max) + min;
+  }
+
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+  }
+  $(document).ready(function() {
+    var txt = "";
+
+    shuffle(titles);
+    txt = titles.shift();
+    $('#caption2').text(txt);
+
+    shuffle(titles);
+    txt = titles.shift();
+    $('#caption3').text(txt);
+
+    shuffle(titles);
+    txt = titles.shift();
+    $('#caption4').text(txt);
+
+    shuffle(titles);
+    txt = titles.shift();
+    $('#caption5').text(txt);
+  });  
+</script>
+
+
+<body>
+  <h1 id="caption1"> welcome, stranger </h1>
+  <div class="frame" id="img1">
+    <div class="background-image" id="background_img1"></div>
+    <div class="inner-frame">
+      <img src="window.png">
+    </div>
+  </div>
+  <h1 id="caption2"> wow </h1>
+  <div class="frame" id="img2">
+    <div class="background-image" id="background_img2"></div>
+    <div class="inner-frame">
+      <img src="alt_no_rocks.png">
+    </div>
+  </div>
+  <h1 id="caption3"> it's lit </h1>
+  <div class="frame" id="img3">
+    <div class="background-image" id="background_img3"></div>
+    <div class="inner-frame">
+      <img src="hackerman.png">
+    </div>
+  </div>
+  <h1 id="caption4"> it's lit </h1>
+  <div class="frame" id="img4">
+    <div class="background-image" id="background_img4"></div>
+    <div class="inner-frame">
+      <h1 id="top-text">ITS TIME FOR</h1>
+      <h1 id="bottom-text">BOTTOM TEXT</h1>
+      <img src="lemongrab.gif">
+    </div>
+  </div>
+  <h1 id="caption5"> it's lit </h1>
+  <div class="frame" id="img5">
+    <div class="background-image" id="background_img5"></div>
+    <div class="inner-frame">
+      <img src="anime_season.png">
+    </div>
+  </div>
+</body>
