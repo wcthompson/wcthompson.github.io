@@ -1,33 +1,47 @@
 "use strict";
 
 const professorGrammarObj = {
-  "name": ["Todd Anderson", "Christina Paxson", "Barrett Hazeltine"],
-  "responseFAIL": ["#fail_sentence_1# #fail_sentence_2#"],
-  "fail_sentence_1" : ["I really dont understand what you're trying to tell me.",
+  "name": ["Todd Anderson", "Christina Paxson", "Barrett Hazeltine", "#firstname# #lastname#", "#firstname# #lastname#", "#firstname# #lastname#", "#firstname# #lastname#", "#firstname# #lastname#"],
+  "firstname": ["William", "George", "Christina", "Rachael", "Robert", "Ian", "Joseph", "David", "Paul", "Chris", "Mary", "Helen"],
+  "lastname": ["Anderson", "Ives", "Stein", "Goldstein", "Jones", "Johnson", "Smith", "Walker", "Donovan", "Pickett", "Teacherman"],
+  "responseFAIL": ["#fail_sentence_1# <br> #fail_sentence_2#",
+                    "In the future, you will want to check your communications for errors, as this was, to be frank, a mess. #fail_sentence_2#"],
+  "fail_sentence_1" : ["You may want to consider enabling spellcheck. ",
                       "This was a worrisome communication at best.",
-                      "While your appeal has been considered, it has been denied."],
-  "fail_sentence_2": ["Unfortunately, the deadline has passed and you fail.",
-                      "This is not a satisfactory excuse, please submit your paper #on_platform# by tonight."],
+                      "While normally I might consider such a request, this was completely indecipherable."
+                      ],
+  "fail_sentence_2": ["Unfortunately, the deadline has passed. You will recieve your grade by next #day_of_week#.",
+                      "This is not a satisfactory excuse, please submit your paper #on_platform# by tonight.",
+                      "I cannot in good faith grant you extra time, and this email doesn't exactly make a good case."                      
+                      ],
   "on_platform": ["on canvas", "on turnitin.com", "in the google drive", "via dropbox",
-                "in the box by my office - STAPPLED PLEASE.", "in the box by my office."],
+                "in the box by my office - STAPLED PLEASE.", "in the box by my office."],
+  "day_of_week": ["saturday", "monday", "tuesday", "wednesday", "friday", "sunday"
+  ],
 
-  "responsePASS": ["#pass_sentence_1# #pass_sentence_2#", "#pass_sentence_1# #pass_sentence_2#, don't expect any more."],
-  "pass_sentence_1": ["well, I can certainly tell you're not going to be able to finish the paper in time...BUT,",
+  "responsePASS": ["#pass_sentence_1# #pass_sentence_2# #pass_ps#", "#pass_sentence_1# #pass_sentence_2# #pass_ps#", 
+                   "#pass_sentence_1# #pass_sentence_2#, don't expect any more. #pass_ps#"],
+  "pass_sentence_1": ["Hello, <br> Well, I can certainly tell you're not going to be able to finish the paper in time...BUT,",
                       "This is not the most professional approach, however",
                       "I'm having some trouble understanding you, but"],
   "pass_sentence_2": ["I suppose you can have a #extension_days_regular# day extension on the paper.",
                       "I'll allow it this time, you may have #extension_days_regular# more days",
-                      "I suppose another #extension_days_regular# couldn't hurt."],
+                      "I suppose another #extension_days_regular# days couldn't hurt."],
   "extension_days_regular": ["2", "3", "4", "3", "3"],
+  "pass_ps": ["", "<br> You may want to consider enabling spellcheck or having a third party read emails in the future...",
+            "<br> Let's say your new deadline is next #day_of_week#."],
 
   "responseWIN": ["#i_get_it# these things happen - I'm always excited to see the work of my top students, however long it takes!",
                   "Sure that's fine, it's a soft deadline anyway.",
-                  " "],
-  "i_get_it": ["Oh no!", "I completely understand,", "The way you explained it makes perfect sense,", "Of course," ]
+                  "Seeing as you have extenuating circumstances, I don't see any harm in extending the assignment. Let's say your new deadline is next #day_of_week#.",
+                  "#win_would# your thorough and well written email pushed me over the edge. Take all the time you need!"],
+  "win_would": ["I would normally say no to such a request, but", "I almost always say no to extension requests, but"],
+  "i_get_it": ["Oh no!", "I completely understand,", "The way you explained it makes perfect sense,", "Of course," ],
+  "signoff": ["Best", "Sincerely"]
 };
 
-const SCORE_WIN = 6;
-const SCORE_PASS = 3;
+const SCORE_WIN = 3;
+const SCORE_PASS = 0;
 
 const dictionary = new Typo("en_US", false, false, { dictionaryPath: "../lib/typo/dictionaries" });
 
@@ -108,7 +122,10 @@ function DysgraphiaGame() {
     $('#reply-prof-name').text(this.professorName);
 
     $('#reply-subject').text("Re: " + subject);
-    $('#reply-body').text(replybody);
+    if($.trim(emailbody) == "") {
+      $('#reply-body').text("???");
+    }
+    $('#reply-body').html(replybody);
   }
 
   // Computes score for a submitted email based on contents of email
@@ -116,17 +133,31 @@ function DysgraphiaGame() {
   this.computeScoreAndGetReply = function(to, subject, body) {
     let typos =  0;
 
+    // check for bad email and empty subject/body
     if (to.toLowerCase() !== this.professorEmail.toLowerCase() ) {
       this.score = 0;
       return 'BAD EMAIL'
     }
 
-    let subjectSplit = subject.split(" ");
-    if (subjectSplit.indexOf('extension') != 0 ) {
+    if (subject === "") {
+      this.scoreBonuses.push('<span class="positive"> -1 whats all this even about? </span>');
+      this.score -= 1;
+    }
+
+    if (body === "") {
+      this.scoreBonuses.push('<span class="negative"> -5 ???</span>');
+      this.score -= 5;
+    }
+
+
+    subject = subject.toLowerCase();
+    if (subject.indexOf('extension') < 0 ) {
       // +1 for using 'extension' in the subject
-      this.scoreBonuses.push('<span class="positive"> +1, be direct </span>');
+      this.scoreBonuses.push('<span class="positive"> +1 be direct </span>');
       this.score += 1;
     }
+
+
 
     // check body for typos, capitalization and word count,
     let bodySplit = body.split(" ");
@@ -138,40 +169,39 @@ function DysgraphiaGame() {
         let firstChar = word.slice(0,1);
         if (firstChar !== firstChar.toUpperCase()) {
           goodCaps = false;
-          break;
         }
       }
-      typos += dictionary.check(word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")) ? 0 : 1;
+      let correctSpelling = dictionary.check(word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+      typos += correctSpelling ? 0 : 1;
     }
-
     if (goodCaps) {
-      this.scoreBonuses.push('<span class="positive"> +1, hooray, you capitalized correctly </span>');
+      this.scoreBonuses.push('<span class="positive"> +1 hooray, you capitalized correctly </span>');
       this.score += 1;
     } else {
-      this.scoreBonuses.push('<span class="negative"> -1, CAN YOU TELL WHAT YOU WERE MISSING? </span>');
+      this.scoreBonuses.push('<span class="negative"> -1 capitalize please </span>');
       this.score -= 1;
     }
 
     if (bodyWC > 50) {
-      this.scoreBonuses.push('<span class="negative"> -1, wordy </span>');
+      this.scoreBonuses.push('<span class="negative"> -1 wordy </span>');
       this.score -= 1;
     } else if (bodyWC > 15) {
-      this.scoreBonuses.push('<span class="positive"> +1, length seems right </span>');
+      this.scoreBonuses.push('<span class="positive"> +1 length seems right </span>');
       this.score += 1;
     } else {
-      this.scoreBonuses.push('<span class="negative"> -1, too short </span>');
+      this.scoreBonuses.push('<span class="negative"> -1 too short </span>');
       this.score -= 1;
     }
 
-    if (typos > 8 || typos > bodyWC/4) {
-      this.scoreBonuses.push('<span class="negative"> -2, did you even proofread? </span>');
+    if (typos >= 2 || typos > bodyWC/4) {
+      this.scoreBonuses.push('<span class="negative"> -2 did you even proofread? </span>');
       this.score -= 2;
-    } else if (typos > 2) {
-      this.scoreBonuses.push('<span class="negative"> -1, almost perfect </span>');
+    } else if (typos == 1) {
+      this.scoreBonuses.push('<span class="negative"> -1 almost perfect </span>');
       this.score -= 1;
     } else if (typos == 0) {
-      this.scoreBonuses.push('<span class="positive"> +3, perfect spelling </span>');
-      this.score += 3;
+      this.scoreBonuses.push('<span class="positive"> +3 perfect spelling </span>');
+      this.score += 2;
     }
 
     return this.getProfessorResponse(this.score);
@@ -179,7 +209,9 @@ function DysgraphiaGame() {
 
   // game end, calculate score and show reply email
   this.stop = function() {
-      clearInterval(this.running);
+      if (this.running) {
+        clearInterval(this.running);
+      }
       $('#timer').hide();
 
       let to = this.getTo();
@@ -194,20 +226,22 @@ function DysgraphiaGame() {
       $('#splashscreen-message').text("A few minutes later you recieve a reply...");
       $("#start-button").text("Another");
       this.setReplyText(subject, body, replyTxt);
+      let bonusList = ""
+      for (var i = 0; i < game.scoreBonuses.length; i++) {
+        bonusList += game.scoreBonuses[i] + "<br>";
+      }
       setTimeout(function () {
         $("#score").show();
         if(replyTxt === 'BAD EMAIL') {
           $('#splashscreen-message').html("You didn't even get the email right. <br> <br> Game Over");
         } else {
-          let bonusList = ""
-          for (var i = 0; i < game.scoreBonuses.length; i++) {
-            bonusList += game.scoreBonuses[i] + "<br>";
-          }
+          game.scoreBonuses = []
+          game.score = 0;
           $('#splashscreen-message').html(bonusList);
           $('#reply').fadeIn();
 
         }
-      }, 3000)
+      }, 3000);
   }
 
   // keeps track of time, iterates through 'thought' hints
@@ -227,6 +261,11 @@ function DysgraphiaGame() {
 
   // set up input handlers and other jquery stuff
   this.setup = function() {
+    $("#splashscreen").hide();
+    $('#title-about').fadeOut();
+    $("#thought").fadeIn();
+    $("#timer").fadeIn();
+    $("#email").fadeIn();
     //set the title on subject change
     $('#subject input').focusout(function() {
       let subject = game.getSubject();
@@ -240,10 +279,43 @@ function DysgraphiaGame() {
       game.stop();
     });
 
-    $("#email-body").on("keyup", function() {
-      let currentVal = $(this).val();
+    $("#email-body").keyup(function(event) {
+      let glitchChance = Math.min((1-game.time/60) *.8, 0.20); // ???
+      console.log(glitchChance)
+      let bodyText = $(this).val() ? $(this).val() : "";
+      let cursorPosition = $('#email-body').prop("selectionStart");
+      let r = Math.random();
+      //skip the spacebar and backspace keys
+      if (event.which !== 0 && event.which !== 32 && event.which !== 8 && r <= glitchChance) {
+        let thisChar = bodyText[cursorPosition-1];
+        if (r < glitchChance * .25) {
+          //double type char
+          bodyText += thisChar
+        } else if ( r < glitchChance * 0.5 && bodyText.length > 2){
+          let prevChar = bodyText[cursorPosition-2];
+          if (prevChar === ' ') {
+            return;
+          }
+          bodyText = bodyText.slice(0, -2);
 
+          // swap pair of letters
+          let pair = prevChar + thisChar;
+          bodyText += pair.split("").reverse().join(""); // reverse two chars
+        } else {
+          bodyText = bodyText.slice(0, cursorPosition-1) + bodyText.slice(cursorPosition);
+          // skip char entirely
+        }
+        game.glitchEffect();
+        $(this).val(bodyText);
+      }
     });
+  }
+
+  this.glitchEffect = function() {
+    $("html").addClass("red");
+    setTimeout(function() {
+      $("html").removeClass("red");
+    }, 5);
   }
 
   this.start = function() {
@@ -257,7 +329,7 @@ function DysgraphiaGame() {
     this.setup();
 
     // reset game var
-    this.time = 90;
+    this.time = 60;
     this.score = 0;
     this.professorName = this.getNewProfessorName();
     this.professorEmail = this.getProfessorEmail();
@@ -265,7 +337,11 @@ function DysgraphiaGame() {
     this.thoughts =["Your paper is due in an hour. You are throughly unprepared and have nothing. The time is nigh -  You must request <span class=\"highlight\">an extension!</span>",
     "Hmm, you're pretty sure you need to be emailing <span class=\"highlight\">" + this.professorName + "</span> at <span class=\"highlight\">" + this.professorEmail + "</span>",
     "You can't remember if this is the first or the second night you've been awake.",
-    "...<br>Your stomach is growling."
+    "You're going to need a convincing excuse",
+    "...<br>Your stomach is growling.",
+    "What was that email again? You already forgot...",
+    "The coffee isn't really working anymore...your attention is waning and it's starting to show.", 
+    "How will you get out of this one?",
     ]
     this.scoreBonuses = [];
 
@@ -277,6 +353,6 @@ function DysgraphiaGame() {
 }
 
 function rand_range(max) {
-    return Math.floor(Math.random() * (max + 1));
+    return Math.floor(Math.random() * (max));
 }
 
