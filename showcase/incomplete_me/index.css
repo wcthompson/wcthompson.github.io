@@ -1,0 +1,385 @@
+html {
+  font-family: arial, helvetica, sans-serif;
+  background-color: #343c7a;
+  background-color: black;
+
+}
+
+body {
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.backToBlack {
+background-color:black;
+
+}
+
+.red {
+  background-color: rgba(255,0,0,.8);
+
+}
+
+.title-text {
+  font-family: Bungee, cursive;
+
+  color: #d450d8;
+  font-family: 'Montserrat', sans-serif;
+  /*-webkit-text-stroke: 2px rgba(0,199,255,.9);*/
+  text-shadow:
+     3px 3px 0 #777,
+   -1px -1px 0 #777,
+    1px -1px 0 #777,
+    -1px 1px 0 #777,
+     1px 1px 0 #777;
+}
+
+#title {
+  display: inline;
+  position: relative;
+  font-size: 2.4em ;
+  line-height: 40px;
+  width: 500px;
+  font-size: 3.4em;
+}
+
+#title-in {
+  color: rgba(0,199,255,.9);
+}
+
+#title hr {
+  margin: 10px;
+}
+
+#title-about {
+  font-family: Bungee, cursive;
+  color: white;
+  font-size: 18pt;
+}
+
+#splashscreen {
+  position: relative;
+  width: 500px;
+  height: 400px;
+  top: 20px;
+  left: 50%;
+  text-align: center;
+  font-size: 1.2em;
+  display: block;
+  margin: 0 0 0 -250px;
+}
+
+#splashscreen-message {
+  color: white;
+  font-size: 1.2em;
+  /*border: 3px solid rgb(225, 226, 226);*/
+  width: 550px;
+  margin-left: -25px;
+  font-family: Bungee, cursive;
+}
+
+#splashscreen-message span {
+  text-align: justify;
+}
+
+#score {
+  -webkit-text-stroke: 0;
+  letter-spacing: 0px;
+  color: white;
+  font-size: 24pt;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+
+#mainwindow {
+  position: absolute;
+  width: 810px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -405px
+}
+
+
+#header {
+  text-align: center;
+  position: relative;
+  margin-bottom: 10px;
+
+}
+
+.bubble {
+  border: 5px solid rgba(0, 0, 255, .4);
+  border-radius: 5px;
+  font: bold 1.5em;
+  color: white;
+  background-color: rgba(255,255,255, .2);
+}
+
+#thought {
+  width: 775px;
+  position: relative;
+  top: 0px;
+  margin: 0 0 5px 5px;
+
+  padding: 7px;
+  display: inline-block;
+  color: white;
+  border-color: rgba(255,255,255, .8);
+  background-color: rgba(255,255,255,.2);
+  letter-spacing: 1px;
+}
+
+.highlight {
+  font-weight: bold;
+  color: rgba(0,199,255,.9);
+}
+
+#thought-text {
+  font-family: Bungee, cursive;
+}
+
+#hint {
+  position: relative;
+  width: auto;
+  padding: 2px;
+  display: inline-block;
+  display: none;
+}
+
+#reply {
+  text-align: left;
+  position: relative;
+  background: url("./img/reply.png") no-repeat;
+  background-size: cover;
+  overflow: auto;
+  top: 0;
+  width: 810px;
+  height: 350px;
+  overflow-y: hidden;
+  border-radius: 5px;
+  margin: 0 0 0 -160px;
+}
+
+#reply-subject {
+  left: 25px;
+  width: 340px;
+  font-family: arial;
+  color: black;
+  font-size: 24pt;
+}
+
+#reply-my-name {
+  left: 65px;
+  top: 25px;
+  width: 90px;
+  font-weight: bold;
+}
+
+#reply-my-preview {
+  color: #888;
+  left: 65px;
+  top: 10px;
+  width: 400px;
+}
+
+#reply-prof-name {
+  left: 65px;
+  top: 30px;
+  font-weight: bold;
+  width: 200px;
+}
+
+#reply-body {
+  position: relative;
+  left: 65px;
+  top: 52px;
+  width: 715px;
+  height: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12pt;
+  line-height: 21px;
+}
+
+#email {
+  position: relative;
+  background: url("./img/blank_email.png") no-repeat center center;
+  background-size: cover;
+  overflow: auto;
+  top: 0;
+  width: 810px;
+  height: 476px;
+  overflow-y: hidden;
+  border-radius: 5px;
+}
+
+#titlebar {
+  color: white;
+  top: 0;
+}
+
+#recepients {
+  top: 40px;
+}
+
+#subject {
+  top: 4px;
+
+}
+.button {
+  display: flex;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  margin: 10px;
+  padding: 12px 12px;
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  font-family: Bungee;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 160px;
+  color: #202129;
+  background-color: #e1e2e2;
+}
+
+.button:hover {
+  transition: all 60ms ease;
+  opacity: .7;
+}
+
+#start-button {
+  width: 100px;
+  margin-left: 185px;
+  padding: 0 15px 0 15px;
+  border-radius: 3px;
+}
+
+.bar {
+  position: relative;
+  height: 32px;
+  padding: 10px 0 0 10px;
+}
+
+.bar input {
+  font-size: 1.1em;
+  border: none;
+  background: transparent;
+  width: 90%;
+}
+
+#body {
+  position: relative;
+  height: 302px;
+  width: 800px;
+  margin: 4px;
+}
+
+#body textarea  {
+  border: 0;
+  background: transparent;
+  width: inherit;
+  height: inherit;
+  font-size: 16pt;
+  padding: 5px;
+}
+
+#send {
+  position: relative;
+  width: 50px;
+  height: 9px;
+  top: -6px;
+  margin-left: 8px;
+  background: 0;
+}
+
+#send:hover {
+  background-color: rgba(255, 255, 255, .1);
+}
+
+#timer {
+  position: relative;
+  top: -100px;
+  right: 10px;
+  height: 40px;
+  width: 40px;
+  float:right;
+  border: 2px black solid;
+  border-radius: 30px;
+}
+
+#timer-text {
+  font-size: 1em;
+  color: red;
+  width: 20px;
+  padding-left: 10px;
+}
+
+.bar label {
+  display: inline-block;
+  width: auto;
+  text-align: right;
+  color: #777777;
+}​
+
+.glitch{
+  color:white;
+  font-size:100px;
+  position:relative;
+  width:400px;
+  margin:0 auto;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:1px 0 blue;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
