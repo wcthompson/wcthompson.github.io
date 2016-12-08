@@ -140,7 +140,7 @@ function DysgraphiaGame() {
     }
 
     if (subject === "") {
-      this.scoreBonuses.push('<span class="positive"> -1 whats all this even about? </span>');
+      this.scoreBonuses.push('<span class="negative"> -1 whats all this even about? </span>');
       this.score -= 1;
     }
 
