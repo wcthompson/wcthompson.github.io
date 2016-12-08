@@ -280,7 +280,7 @@ function DysgraphiaGame() {
     });
 
     $("#email-body").keyup(function(event) {
-      let glitchChance = Math.min((1-game.time/60) *.8, 0.20); // ???
+      let glitchChance = Math.min((1-game.time/60) *.8, 0.1); // ???
       console.log(glitchChance)
       let bodyText = $(this).val() ? $(this).val() : "";
       let cursorPosition = $('#email-body').prop("selectionStart");
