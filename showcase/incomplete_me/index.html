@@ -8,10 +8,9 @@
 
 
 <script type="text/javascript">
-
+var game = new DysgraphiaGame();
 $( document ).ready(function() {
   time = 0;
-  game = new DysgraphiaGame();
   $("#start-button").click(function() {
     game.start();
   });

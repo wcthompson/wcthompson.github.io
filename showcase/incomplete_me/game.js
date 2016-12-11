@@ -135,7 +135,7 @@ function DysgraphiaGame() {
 
     // check for bad email and empty subject/body
     if (to.toLowerCase() !== this.professorEmail.toLowerCase() ) {
-      this.scoreBonuses.push('<span class="negative"> -1 not even the right email. </span>');
+      this.scoreBonuses.push('<span class="negative"> -1 not even the right email</span>');
       this.score -= 1;
     }
 
@@ -318,14 +318,17 @@ function DysgraphiaGame() {
     }, 5);
   }
 
-  this.start = function() {
-    // Clear everything
-    var elements = document.getElementsByTagName("input textarea");
+  this.clearEverything = function () {
+    var elements = $("input,textarea");
     for (var ii=0; ii < elements.length; ii++) {
       if (elements[ii].type == "text") {
         elements[ii].value = "";
       }
     }
+  }
+  this.start = function() {
+    // Clear everything
+    this.clearEverything();
     this.setup();
 
     // reset game var
