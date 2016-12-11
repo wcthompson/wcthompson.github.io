@@ -135,25 +135,25 @@ function DysgraphiaGame() {
 
     // check for bad email and empty subject/body
     if (to.toLowerCase() !== this.professorEmail.toLowerCase() ) {
-      this.score = 0;
-      return 'BAD EMAIL'
+      this.scoreBonuses.push('<span class="negative"> -1 not even the right email. </span>');
+      this.score -= 1;
     }
 
     if (subject === "") {
-      this.scoreBonuses.push('<span class="negative"> -1 whats all this even about? </span>');
+      this.scoreBonuses.push('<span class="negative"> -1 whats all this even about? (no subject) </span>');
       this.score -= 1;
     }
 
     if (body === "") {
-      this.scoreBonuses.push('<span class="negative"> -5 ???</span>');
+      this.scoreBonuses.push('<span class="negative"> -5 ??? (no body)</span>');
       this.score -= 5;
     }
 
 
     subject = subject.toLowerCase();
-    if (subject.indexOf('extension') < 0 ) {
+    if (subject.indexOf('extension') < 0 || subject.indexOf('deadline') < 0) {
       // +1 for using 'extension' in the subject
-      this.scoreBonuses.push('<span class="positive"> +1 be direct </span>');
+      this.scoreBonuses.push('<span class="positive"> +1 be direct with subject </span>');
       this.score += 1;
     }
 
@@ -280,7 +280,7 @@ function DysgraphiaGame() {
     });
 
     $("#email-body").keyup(function(event) {
-      let glitchChance = Math.min((1-game.time/60) *.8, 0.1); // ???
+      let glitchChance = Math.min((1-game.time/60) *.6, 0.1); // ???
       console.log(glitchChance)
       let bodyText = $(this).val() ? $(this).val() : "";
       let cursorPosition = $('#email-body').prop("selectionStart");
