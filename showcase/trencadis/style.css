@@ -1,5 +1,5 @@
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   margin: 0;
   font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
 }

@@ -34,7 +34,7 @@ tile_selector.prototype.setup = function (div, w, h) {
     self.shatter();
   });
 
-  this.gb = createGraphics(w + 2, h + 2);
+  this.gb = createGraphics(w + 5, h + 5);
   this.new_tile();
 
 }
@@ -68,11 +68,7 @@ tile_selector.prototype.display = function () {
     this.rect.display(this.gb);
   } else {
     for (var i = this.shards.length - 1; i >= 0; i--) {
-      stroke(1);
       this.shards[i].color = tile_color;
-      if (activeTile && this.shards[i].center == activeTile.center) {
-        stroke(200,200,200);
-      }
       this.shards[i].display(this.gb, true); // no rotation
     }
   }
