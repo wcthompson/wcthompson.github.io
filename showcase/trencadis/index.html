@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script src="lib/jquery-1.11.1.min.js"></script>
+<script src="lib/p5.min.js"></script>
+<script src="lib/quicksettings.js" type="text/javascript"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="lib/p5.gui.js" type="text/javascript"></script>
+<script src="tile.js"></script>
+<script src="tile_select.js"></script>
+<script src="canvas.js"></script>
+<script src="lib/p5.dom.min.js"></script>
+<script src="lib/p5.gif.js"></script>
+
+<html>
+  <head>
+    <title>Trencadís</title>
+    <div id="main">
+      <div id="header-bar">
+         <div class="container">
+          <h1 id="title">trencadís</h1>
+          <p id="caption"><i>a HIAA0010 Final Project</i></p>
+         </div>
+         <div id="hint-text">
+           <p>- Click 'shatter' to break tiles into moveable shards (repeatable!)
+           <br> - Use the ← and → arrow keys or the mouse wheel to rotate selected shards
+           <br>- Check 'coloring_only' to change a tile's color without moving it
+           </p>
+         </div>
+         <button id="save-btn" class="btn">Save</button>
+      </div>
+      <div id="tile-select">
+        <h2>Tile Select</h2>
+        <div id="next-tile"></div>
+        <button id="shatter-btn" class="btn">Shatter</button>
+      </div>
+      <div></div>
+      <div id="app">
+        <div id="inner-canvas"></div>
+        <script src="app.js"></script>
+      </div>
+    </div>
+  </head>
+  <body>
+  </body>
+</html>
