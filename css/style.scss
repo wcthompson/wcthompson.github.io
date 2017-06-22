@@ -5,7 +5,7 @@ $text: #4b507a;
 $cyan: #60daaa;
 $yellow: #fbca67;
 $orange: #ff8a30;
-$red: #f45e61;
+$pinkish: #F45D8A;
 $purple: #6477b9;
 $blue: #0eb7da;
 
@@ -93,7 +93,6 @@ li.menu-item {
 
 
 #section-container {
-  width: 500px;
   height: auto;
   left: 50%;
   margin: 100px 0 0 -250px;
@@ -107,7 +106,7 @@ li.menu-item {
 #section-content {
   height: auto;
   background-color: rgba(255, 255, 255, .2);
-  padding: 4px;
+  padding: 10px;
   cursor: default;
   border: 2px solid $cyan;
   text-align: center;
@@ -118,12 +117,19 @@ li.menu-item {
   width: 200px;
   height: 200px;
   margin: 5px;
-  background-color: rgba(100, 100, 100, 1);
+  /*background-color: rgba(100, 100, 100, 1);*/
+  border: none;
+  background: url(../image/twinkle.gif);
+  &:hover {
+    color: rgba(255,255,255, .2);
+    border: 2px solid $pinkish;
+  }
 }
 
 #about-main {
-  padding: 10px;
   color: white;
+  display: inline-block;
+  max-width: 800px;
 }
 
 #about-main p {
@@ -132,9 +138,19 @@ li.menu-item {
 }
 
 #about-picture {
-  width: auto;
-  min-width: 300px;
+  display: inherit;
+  min-width: 250px;
+  min-height: 250px;
+  width: 100%;
+  height: 100%;
+  background: url(../image/face.jpg) repeat;
+}
 
+#about-text {
+  height: auto;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  margin: 0;
 }
 
 .path {
@@ -191,7 +207,7 @@ button {
     bottom: 0;
     right: 0;
   }
-  
+
   &:hover {
   }
 
@@ -236,7 +252,7 @@ button {
 
     // set z-index on 8, like in ♥ 8-bits ♥, or…
     // set z-index on 2147483648 or more to enable scanlines on Chrome fullscreen (doesn't work in Firefox or IE);
-    $scan-z-index: 2147483648; 
+    $scan-z-index: 2147483648;
 
 /* MOVING SCANLINE SETTINGS */
 
@@ -305,7 +321,7 @@ button {
             );
             background-size: 100% $scan-width*2;
             @include scan-crt($scan-crt);
-        }  
+        }
     }
 
 /* ANIMATE UNIQUE SCANLINE */

@@ -13,20 +13,18 @@
   </button>
   <ul id="menu">
     <li class="menu-item scanlines">About</li>
-    <li class="menu-item scanlines">Stuff</li>
+    <li class="menu-item scanlines">Things</li>
   </ul>
-  <div id="links"> 
+  <div id="links">
     <div class="icon" id="tumblr"></div>
     <div class="icon" id="email"></div>
   </div>
   </div>
 
-  <div id="section-container" class="scanlines">
-    <h2 id="section-title"></h2>  
-    <div id="section-content">
-      
+  <div id="section-container">
+    <h2 id="section-title"></h2>
+    <div id="section-content" class="scanlines">
     </div>
-
   </div>
 </main>
 
@@ -34,6 +32,10 @@
 
 <script type="text/javascript">
   var isLeft = false;
+
+   $.ajaxSetup({
+    cache: false
+  }); // REMOVE ME
 
   function showMenu() {
     $( "#navbox" ).promise().done(function() {
@@ -45,6 +47,33 @@
       $('#links').delay(eT).fadeIn('slow');
     });
   }
+
+  function changeAboutContent(title) {
+    if (title === $('#section-title').text()) {
+      return;
+    }
+    $('#section-title').fadeOut(200);
+    //when body fades out, change text, then fade in
+    $.when( $('#section-container').fadeOut(200) ).done(function() {
+      $('#section-title').text(title)
+
+      if (title === 'Things') {
+        $.get("things.html", function(text) {
+          $('#section-content').html(text)
+        });
+
+      } else if (title === 'About') {
+        $.get("about.html", function(text) {
+          console.log(text);
+          $('#section-content').html(text)
+        });
+      }
+
+    $('#section-title').fadeIn(200);
+    $('#section-container').fadeIn(200);
+    });
+  }
+
   $('.menu-item').hide();
   $('#links').hide();
   $('#section-container').hide();
@@ -54,29 +83,20 @@
     $("#name").css('border', '2px solid #60daaa');
     $("#name").css('box-shadow', 'none');
     if(!isLeft){
-      $("#navbox").animate({left:150});    
+      $("#navbox").animate({left:150});
        isLeft = true;
        showMenu();
-    }        
+    }
   });
 
   $('.menu-item').click(function() {
-    //$('#section-container').fadeOut(200);
     var title = $(this).text();
-    $('#section-title').text(title)
-    if (title === 'Stuff') {
-      $.get("stuff.html", function(text) {
-        $('#section-content').html(text)    
-      });
-    } else if (title === 'About') {
-      $.get("about.html", function(text) {
-        console.log(text);
-        $('#section-content').html(text)    
-      });
-    }
-    
-    $('#section-container').fadeIn(500);
+    changeAboutContent(title);
   });
-  
+
+  $('.thumb').click(function () {
+    return;
+  });
+
 </script>
 </html>
