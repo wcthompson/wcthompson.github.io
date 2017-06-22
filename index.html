@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<html>
+<head>
+  <title>hey,</title>
+</head>
+<body>
+<main>
+  <div id="navbox">
+  <button id="name" class="draw">
+    WILLIAM THOMPSON
+  </button>
+  <ul id="menu">
+    <li class="menu-item scanlines">About</li>
+    <li class="menu-item scanlines">Stuff</li>
+  </ul>
+  <div id="links"> 
+    <div class="icon" id="tumblr"></div>
+    <div class="icon" id="email"></div>
+  </div>
+  </div>
+
+  <div id="section-container" class="scanlines">
+    <h2 id="section-title"></h2>  
+    <div id="section-content">
+      
+    </div>
+
+  </div>
+</main>
+
+</body>
+
+<script type="text/javascript">
+  var isLeft = false;
+
+  function showMenu() {
+    $( "#navbox" ).promise().done(function() {
+      var eT=0;
+      $('.menu-item').each(function() {
+          $(this).delay(eT).fadeIn('slow');
+          eT += 350;
+      });
+      $('#links').delay(eT).fadeIn('slow');
+    });
+  }
+  $('.menu-item').hide();
+  $('#links').hide();
+  $('#section-container').hide();
+
+  $("#name").click(function () {
+    $("#name").removeClass('draw');
+    $("#name").css('border', '2px solid #60daaa');
+    $("#name").css('box-shadow', 'none');
+    if(!isLeft){
+      $("#navbox").animate({left:150});    
+       isLeft = true;
+       showMenu();
+    }        
+  });
+
+  $('.menu-item').click(function() {
+    //$('#section-container').fadeOut(200);
+    var title = $(this).text();
+    $('#section-title').text(title)
+    if (title === 'Stuff') {
+      $.get("stuff.html", function(text) {
+        $('#section-content').html(text)    
+      });
+    } else if (title === 'About') {
+      $.get("about.html", function(text) {
+        console.log(text);
+        $('#section-content').html(text)    
+      });
+    }
+    
+    $('#section-container').fadeIn(500);
+  });
+  
+</script>
+</html>
