@@ -28,7 +28,6 @@ var keepText = 5;
 
 function preload() {
   track = loadSound("lean_on.mp3");
-  diamonds = loadSound('diamonds.mp3');
 }
 
 function setup() {
